@@ -1,0 +1,21 @@
+# Template file for 'throttled'
+pkgname=throttled
+version=0.6
+revision=1
+depends="python3 python3-dbus python3-gobject"
+conf_files="/etc/lenovo_fix.conf"
+short_desc="Workaround for Intel throttling issues in Linux"
+maintainer="León Illanes <lillanes@cs.toronto.edu>"
+license="MIT"
+homepage="https://github.com/erpalma/throttled"
+distfiles="https://github.com/erpalma/throttled/archive/v${version}.tar.gz"
+checksum=93d11b78d35b99ce345e41291f0268e4c21d0ccb2a80922839e51ec2fe3ae0c1
+
+do_install() {
+	vinstall lenovo_fix.py 755 usr/libexec/$pkgname
+	vinstall mmio.py 755 usr/libexec/$pkgname
+	vdoc README.md
+	vlicense LICENSE
+	vconf etc/lenovo_fix.conf
+	vsv throttled
+}

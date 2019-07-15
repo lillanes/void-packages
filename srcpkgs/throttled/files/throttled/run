@@ -1,0 +1,2 @@
+#!/bin/sh
+PYTHONUNBUFFERED=1 exec python3 /usr/libexec/throttled/lenovo_fix.py
