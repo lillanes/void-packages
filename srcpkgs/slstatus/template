@@ -3,11 +3,11 @@ pkgname=slstatus
 version=0.0.0.lillanes
 revision=1
 build_style=gnu-makefile
+makedepends="git alsa-lib-devel libX11-devel"
 short_desc="Suckless status monitor for dwm"
 maintainer="León Illanes <lillanes@cs.toronto.edu>"
 license="ISC"
 homepage="https://tools.suckless.org/slstatus/"
-makedepends="git alsa-lib-devel libX11-devel"
 _repository="https://gitlab.com/lillanes/slstatus.git"
 
 do_fetch() {
