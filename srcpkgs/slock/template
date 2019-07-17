@@ -1,15 +1,17 @@
 # Template file for 'slock'
 pkgname=slock
-version=1.4
+version=1.4.lillanes
 revision=1
-hostmakedepends="pkg-config"
-makedepends="libXrandr-devel"
+makedepends="git libXrandr-devel"
 short_desc="Simple screen locker for X"
-maintainer="Orphaned <orphan@voidlinux.org>"
+maintainer="León Illanes <lillanes@cs.toronto.edu>"
 license="MIT"
 homepage="http://tools.suckless.org/slock"
-distfiles="http://dl.suckless.org/tools/slock-${version}.tar.gz"
-checksum=b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a
+_repository="https://gitlab.com/lillanes/slock.git"
+
+do_fetch() {
+	git clone ${_repository} ${wrksrc}
+}
 
 do_build() {
 	sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
