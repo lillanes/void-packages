@@ -1,0 +1,26 @@
+# Template file for 'pia'
+pkgname=pia
+version=0.0.0.lillanes
+revision=1
+makedepends="git"
+depends="openvpn vpnfailsafe"
+short_desc="Scripts and configs for using PIA VPN"
+maintainer="León Illanes <lillanes@cs.toronto.edu>"
+license="MIT"
+homepage="https://gitlab.com/lillanes/pia-config"
+_repository="https://gitlab.com/lillanes/pia-config.git"
+
+do_fetch() {
+	git clone ${_repository} ${wrksrc}
+}
+
+do_install() {
+	vmkdir usr/share/pia
+	vmkdir usr/share/pia/servers
+	vcopy "openvpn/*.ovpn" usr/share/pia/servers
+	vinstall auth.txt 600 usr/share/pia
+	vinstall service/run 755 etc/sv/pia
+	vinstall service/finish 755 etc/sv/pia
+	vbin pia
+	vlicense LICENSE
+}
