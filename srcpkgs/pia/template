@@ -7,8 +7,8 @@ depends="openvpn vpnfailsafe"
 short_desc="Scripts and configs for using PIA VPN"
 maintainer="León Illanes <lillanes@cs.toronto.edu>"
 license="MIT"
-homepage="https://gitlab.com/lillanes/pia-config"
-_repository="https://gitlab.com/lillanes/pia-config.git"
+homepage="https://github.com/lillanes/pia-config"
+_repository="https://github.com/lillanes/pia-config.git"
 
 do_fetch() {
 	git clone ${_repository} ${wrksrc}

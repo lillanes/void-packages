@@ -7,7 +7,7 @@ short_desc="Dynamic window manager for X"
 maintainer="León Illanes <lillanes@cs.toronto.edu>"
 license="MIT"
 homepage="http://dwm.suckless.org"
-_repository="https://gitlab.com/lillanes/dwm.git"
+_repository="https://github.com/lillanes/dwm.git"
 
 do_fetch() {
 	git clone ${_repository} ${wrksrc}

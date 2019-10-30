@@ -11,7 +11,7 @@ short_desc="Simple terminal implementation for X"
 maintainer='León Illanes <lillanes@cs.toronto.edu>'
 license="MIT"
 homepage="https://st.suckless.org"
-_repository="https://gitlab.com/lillanes/st.git"
+_repository="https://github.com/lillanes/st.git"
 
 do_fetch() {
 	git clone ${_repository} ${wrksrc}

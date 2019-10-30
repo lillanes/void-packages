@@ -7,7 +7,7 @@ short_desc="Simple screen locker for X"
 maintainer="León Illanes <lillanes@cs.toronto.edu>"
 license="MIT"
 homepage="http://tools.suckless.org/slock"
-_repository="https://gitlab.com/lillanes/slock.git"
+_repository="https://github.com/lillanes/slock.git"
 
 do_fetch() {
 	git clone ${_repository} ${wrksrc}

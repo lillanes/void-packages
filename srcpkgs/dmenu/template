@@ -7,7 +7,7 @@ short_desc="Generic menu for X"
 maintainer="León Illanes <lillanes@cs.toronto.edu>"
 license="MIT"
 homepage="https://tools.suckless.org/dmenu/"
-_repository="https://gitlab.com/lillanes/dmenu.git"
+_repository="https://github.com/lillanes/dmenu.git"
 
 do_fetch() {
 	git clone ${_repository} ${wrksrc}
