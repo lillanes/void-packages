@@ -5,19 +5,19 @@
 #
 #   https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=224931
 
-_githash="886bda7dfd4279fa9eef4345434ca83a347908bc"
+_githash="edc6ef437bd690772d7a562adeea6c85daf11440"
 _gitshort="${_githash:0:7}"
 
 pkgname=rpi-kernel
-version=4.19.84
-revision=1
+version=4.19.89
+revision=2
 wrksrc="linux-${_githash}"
 maintainer="Peter Bui <pbui@github.bx612.space>"
 homepage="http://www.kernel.org"
 license="GPL-2.0-only"
 short_desc="The Linux kernel for Raspberry Pi (${version%.*} series [git ${_gitshort}])"
 distfiles="https://github.com/raspberrypi/linux/archive/${_githash}.tar.gz"
-checksum=56cbc2901edef5e0b158daee5f13335de300f88c917f3e8a4dc1ef294ce256bf
+checksum=c96d9b6351b4876f5b1296decea8d3d71b06021abc22398df1bbd962a6ffc52a
 
 _kernver="${version}_${revision}"
 
@@ -89,6 +89,9 @@ do_configure() {
 	echo "CONFIG_IR_RC6_DECODER=m" >> "$defconfig"
 	echo "CONFIG_IR_MCEUSB=m" >> "$defconfig"
 
+	# HID Controllers
+	echo "CONFIG_HID_STEAM=y" >> "$defconfig"
+	
 	make ${makejobs} ${_cross} ARCH=${_arch} ${target}
 
 	# Always use our revision to CONFIG_LOCALVERSION to match our pkg version.

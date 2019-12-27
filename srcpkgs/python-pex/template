@@ -1,12 +1,12 @@
 # Template file for 'python-pex'
 pkgname=python-pex
 version=1.6.12
-revision=1
+revision=2
 archs=noarch
 wrksrc="pex-${version}"
 build_style=python-module
 pycompile_module="pex"
-hostmakedepends="python-setuptools python3-setuptools python-Sphinx python3-Sphinx"
+hostmakedepends="python-setuptools python3-setuptools python3-Sphinx"
 depends="python-setuptools"
 short_desc="Library & tool for generating .pex (Python EXecutable) files (Python2)"
 maintainer="Daniel Santana <daniel@santana.tech>"

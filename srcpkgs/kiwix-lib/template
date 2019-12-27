@@ -1,6 +1,6 @@
 # Template file for 'kiwix-lib'
 pkgname=kiwix-lib
-version=8.2.0
+version=8.2.2
 revision=1
 build_style=meson
 hostmakedepends="pkg-config"
@@ -12,10 +12,11 @@ license="GPL-3.0-or-later"
 homepage="https://www.kiwix.org/"
 changelog="https://github.com/kiwix/kiwix-lib/blob/${version}/ChangeLog"
 distfiles="https://github.com/kiwix/kiwix-lib/archive/${version}.tar.gz"
-checksum=1e169db03f2b26f837f116a0b131afb497d1580bb125b81ee3ccbdf6c19d4b59
+checksum=dc8d454d79b175c0b9f3c4d268db17da8e80fcd8df3987af0f58cb399bd5da61
 
 case "$XBPS_TARGET_MACHINE" in
-	armv6l*)
+	ppc64*) ;;
+	armv6l*|ppc*)
 		makedepends+=" libatomic-devel"
 		LDFLAGS="-latomic"
 		;;

@@ -117,11 +117,13 @@ libpng16.so.16 libpng-1.6.2_1
 libXrender.so.1 libXrender-0.9.4_1
 libXrandr.so.2 libXrandr-1.3.0_1
 libGLU.so.1 glu-9.0.0_1
+libGL.so.1 libGL-7.11_1
 libEGL.so.1 libEGL-7.11_1
 libGLESv1_CM.so.1 libGLES-1.0_1
 libGLESv2.so.2 libGLES-1.0_1
 libEGL.so rpi-userland-0.0.0.0.20150907_1
 libGLESv2.so rpi-userland-0.0.0.0.20150907_1
+libGLESv2.so atom-1.41.0_1
 libGLESv2.so opera-55.0.2994.37_2
 libGLESv2.so discord-0.0.7_1
 libGLESv2.so keybase-desktop-3.1.2_1
@@ -134,7 +136,6 @@ libbrcmEGL.so rpi-userland-20180103_2
 libbrcmGLESv2.so rpi-userland-20180103_2
 libbrcmOpenVG.so rpi-userland-20180103_2
 libwayland-egl.so.1 wayland-1.15.0_4
-libGL.so.1 libGL-7.11_1
 libnvidia-ml.so.1 nvidia-libs-346.47_1 ignore
 libnvidia-ml.so.1 nvidia304-libs-304.00_1 ignore
 libnvidia-ml.so.1 nvidia340-libs-340.46_1 ignore
@@ -146,10 +147,13 @@ libnvidia-gtk3.so.346.47 nvidia-gtklibs-346.47_1 ignore
 libnvidia-glcore.so.346.47 nvidia340-libs-340.46_1 ignore
 libnvidia-glcore.so.390.87 nvidia390-libs-390.87_1 ignore
 libnvidia-glsi.so.346.72 nvidia-libs-346.72_1 ignore
+libnvidia-glsi.so.340.107 nvidia340-libs-340.107_7 ignore
 libnvidia-fatbinaryloader.so.390.132 nvidia390-libs-390.132_1 ignore
 libnvidia-fatbinaryloader.so.430.40 nvidia-libs-430.40_1 ignore
 libglapi.so.0 libglapi-7.11_1
 libgbm.so.1 libgbm-9.0_1
+libOpenGL.so.0 libglvnd-1.3.0_1
+libGLX.so.0 libglvnd-1.3.0_1
 librsvg-2.so.2 librsvg-2.26.0_1
 libdbus-1.so.3 dbus-libs-1.2.10_1
 libdbus-glib-1.so.2 dbus-glib-0.80_1
@@ -305,8 +309,6 @@ libXfontcache.so.1 libXfontcache-1.0.4_1
 libXv.so.1 libXv-1.0.4_1
 libXvMC.so.1 libXvMC-1.0.4_1
 libXvMCW.so.1 libXvMC-1.0.4_1
-libXvMCr600.so.1 mesa-ati-dri-10.1.0_1
-libXvMCnouveau.so.1 mesa-nouveau-dri-10.1.0_1
 libxcb-errors.so.0 xcb-util-errors-1.0_1
 libxcb-icccm.so.4 xcb-util-wm-0.3.9_1
 libxcb-ewmh.so.2 xcb-util-wm-0.3.9_1
@@ -684,7 +686,7 @@ libboost_stacktrace_noop.so.1.69.0 libboost_stacktrace_noop1.69-1.69.0_1<1.70.0
 libboost_stacktrace_addr2line.so.1.69.0 libboost_stacktrace_addr2line1.69-1.69.0_1<1.70.0
 libboost_stacktrace_basic.so.1.69.0 libboost_stacktrace_basic1.69-1.69.0_1<1.70.0
 libboost_python27.so.1.69.0 boost-python1.69-1.69.0_1<1.70.0
-libboost_python36.so.1.69.0 boost-python3-1.69-1.69.0_1<1.70.0
+libboost_python38.so.1.69.0 boost-python3-1.69-1.69.0_1<1.70.0
 libexempi.so.8 exempi-2.5.0_1
 libatasmart.so.4 libatasmart-0.17_1
 libsgutils2.so.2 libsgutils-1.42_1
@@ -833,7 +835,7 @@ libgjs-gi.so gjs-0.7.11_1
 libgjs-dbus.so.0 gjs-0.7.11_1
 libtelepathy-glib.so.0 telepathy-glib-0.15.5_1
 libaccountsservice.so.0 accountsservice-0.6.4_1
-libgee.so.2 libgee-0.6.1_1
+libgee-0.8.so.2 libgee-0.20.2_1
 libfolks.so.25 folks-0.9.5_1
 libfolks-telepathy.so.25 folks-0.9.5_1
 libfolks-eds.so.25 folks-0.9.5_1
@@ -994,6 +996,7 @@ libalut.so.0 freealut-1.1.0_1
 liblilv-0.so.0 liblilv-0.14.4_1
 libsuil-0.so.0 suil-0.6.4_1
 libmcpp.so.0 libmcpp-2.7.2_1
+libjitterentropy.so.2 jitterentropy-2.2.0_1
 libkdecorations2.so.5 kdecoration-5.8.4_1
 libkdecorations2private.so.6 kdecoration-5.13.3_1
 libGlacier2.so.35 libIce-3.5.0_1
@@ -1413,7 +1416,7 @@ libgfchangelog.so.0 libglusterfs-3.8.0_1
 libgfrpc.so.0 libglusterfs-3.8.0_1
 libgfxdr.so.0 libglusterfs-3.8.0_1
 libgfapi.so.0 libglusterfs-3.8.0_1
-libsnapper.so.4 libsnapper-0.4.1_1
+libsnapper.so.5 libsnapper-0.4.1_1
 libtsm.so.3 libtsm-3_1
 libxine.so.2 libxine-1.2.4_1
 libjbig2dec.so.0 libjbig2dec-0.11_1
@@ -1425,6 +1428,7 @@ libvlc_pulse.so.0 libvlc-3.0.2_1
 libvlc_xcb_events.so.0 libvlc-3.0.2_1
 libcmocka.so.0 cmocka-1.1.1_1
 libbtrfs.so.0 libbtrfs-3.12_1
+libbtrfsutil.so.1 libbtrfsutil-5.4_1
 libecore_audio.so.1 efl-1.12.0_1
 libecore_con.so.1 efl-1.12.0_1
 libecore_evas.so.1 efl-1.12.0_1
@@ -1545,10 +1549,9 @@ libdovecot-lda.so.0 dovecot-2.2.11_2
 libnetapi.so.0 samba-3.6.23_1
 libsmbsharemodes.so.0 samba-3.6.23_1
 libmysqld.so.18 libmariadbclient-5.5.36_1
-libwscodecs.so.2 libwireshark-2.6.2_1
-libwiretap.so.9 libwireshark-3.0.0_1
-libwireshark.so.12 libwireshark-3.0.0_1
-libwsutil.so.10 libwireshark-3.0.0_1
+libwiretap.so.10 libwireshark-3.2.0_1
+libwireshark.so.13 libwireshark-3.2.0_1
+libwsutil.so.11 libwireshark-3.2.0_1
 libKF5ContactEditor.so.5 akonadi-contacts-17.12.1_1
 libKF5AkonadiContact.so.5 akonadi-contacts-17.12.1_1
 libKF5Prison.so.5 prison-5.43.0_1
@@ -1653,13 +1656,13 @@ libtcmalloc_minimal_debug.so.4 gperftools-2.1.90_1
 libtcmalloc_debug.so.4 gperftools-2.1.90_1
 libprofiler.so.0 gperftools-2.1.90_1
 libtcmalloc_and_profiler.so.4 gperftools-2.1.90_1
-libHalf.so.24 ilmbase-2.3.0_1
-libIex-2_3.so.24 ilmbase-2.3.0_1
-libIexMath-2_3.so.24 ilmbase-2.3.0_1
-libImath-2_3.so.24 ilmbase-2.3.0_1
-libIlmThread-2_3.so.24 ilmbase-2.3.0_1
-libIlmImf-2_3.so.24 libopenexr-2.3.0_1
-libIlmImfUtil-2_3.so.24 libopenexr-2.3.0_1
+libHalf-2_4.so.24 ilmbase-2.4.0_1
+libIex-2_4.so.24 ilmbase-2.4.0_1
+libIexMath-2_4.so.24 ilmbase-2.4.0_1
+libImath-2_4.so.24 ilmbase-2.4.0_1
+libIlmThread-2_4.so.24 ilmbase-2.4.0_1
+libIlmImf-2_4.so.24 libopenexr-2.4.0_1
+libIlmImfUtil-2_4.so.24 libopenexr-2.4.0_1
 libGraphicsMagick.so.3 libgraphicsmagick-1.3.19_1
 libGraphicsMagick++.so.12 libgraphicsmagick-1.3.22_1
 libGraphicsMagickWand.so.2 libgraphicsmagick-1.3.19_1
@@ -1704,7 +1707,10 @@ libportaudiocpp.so.0 portaudio-cpp-19.20140130_1
 libdar.so.6000 libdar-2.6.6_1
 libdar64.so.6000 libdar-2.6.6_1
 libpython3.so python3-3.6.2_1
+libdar.so.5000 libdar-2.4.14_1
 libpython3.6m.so.1.0 python3-3.6.2_1
+libpython3.so python3-3.8.0_1
+libpython3.8.so.1.0 python3-3.8.0_1
 libbrscandec2.so.1 brother-brscan3-0.2.11_2
 libpyglib-2.0-python.so.0 python-gobject2-2.28.6_11
 libxmlrpc_server_abyss.so.3 xmlrpc-c-1.25.28_1
@@ -1796,6 +1802,18 @@ libawt_xawt.so openjdk7-bootstrap-7u221b02_1
 libjava.so openjdk7-bootstrap-7u221b02_1
 libjli.so openjdk7-bootstrap-7u221b02_1
 libjvm.so openjdk7-bootstrap-7u221b02_1
+libjawt.so openjdk9-bootstrap-9.0.4p12_1
+libawt.so openjdk9-bootstrap-9.0.4p12_1
+libawt_xawt.so openjdk9-bootstrap-9.0.4p12_1
+libjava.so openjdk9-bootstrap-9.0.4p12_1
+libjli.so openjdk9-bootstrap-9.0.4p12_1
+libjvm.so openjdk9-bootstrap-9.0.4p12_1
+libjawt.so openjdk10-bootstrap-10.0.2p13_1
+libawt.so openjdk10-bootstrap-10.0.2p13_1
+libawt_xawt.so openjdk10-bootstrap-10.0.2p13_1
+libjava.so openjdk10-bootstrap-10.0.2p13_1
+libjli.so openjdk10-bootstrap-10.0.2p13_1
+libjvm.so openjdk10-bootstrap-10.0.2p13_1
 libucl.so.5 libucl-0.8.1_1
 libhandle.so.1 xfsprogs-3.2.1_1
 libnfnetlink.so.0 libnfnetlink-1.0.1_1
@@ -1933,7 +1951,7 @@ libQt5WebKit.so.5 qt5-webkit-5.6.0_1
 libQt5WebKitWidgets.so.5 qt5-webkit-5.6.0_1
 libQt5TextToSpeech.so.5 qt5-speech-5.8.0_1
 libQt5Bodymovin.so.5 qt5-lottie-5.13.0_1
-libx265.so.176 x265-3.1.1_1
+libx265.so.179 x265-3.2.1_1
 libQt5Xdg.so.3 libqtxdg-3.1.0_1
 libQt5XdgIconLoader.so.3 libqtxdg-3.1.0_1
 libqwt.so.6 qwt-6.1.3_1
@@ -1956,7 +1974,7 @@ libldns.so.3 libldns-1.7.1_1
 libopenjpeg.so.5 libopenjpeg-1.5.2_1
 liboping.so.0 liboping-1.8.0_1
 libloudmouth-1.so.0 loudmouth-1.4.3_1
-libtorrent-rasterbar.so.9 libtorrent-rasterbar-1.1.1_1
+libtorrent-rasterbar.so.10 libtorrent-rasterbar-1.2.2_1
 libcapstone.so.4 capstone-4.0_1
 libhavege.so.1 libhaveged-1.9.1_1
 libnih.so.1 libnih-1.0.3_1
@@ -2167,7 +2185,7 @@ libOIS.so.1.5.0 ois-1.5_1
 libSILLY.so.1 silly-0.1.0_1
 libkeybinder-3.0.so.0 libkeybinder3-0.3.0_1
 libbrlapi.so.0.7 brltty-6.0_1
-liblouis.so.19 liblouis-3.11.0_1
+liblouis.so.20 liblouis-3.11.0_1
 libCEGUIBase-0.7.9.so cegui07-0.7.9_1
 libCEGUIFalagardWRBase-0.7.9.so cegui07-0.7.9_1
 libCEGUIDevILImageCodec-0.7.9.so cegui07-0.7.9_1
@@ -2384,7 +2402,7 @@ libhwloc.so.15 libhwloc-2.0.4_1
 libnetfilter_cttimeout.so.1 libnetfilter_cttimeout-1.0.0_1
 libnetfilter_cthelper.so.0 libnetfilter_cthelper-1.0.0_1
 libnetfilter_queue.so.1 libnetfilter_queue-1.0.2_1
-libfilezilla.so.0 libfilezilla-0.3.1_1
+libfilezilla.so.3 libfilezilla-0.19.3_1
 libtommath.so.1 libtommath-1.0_1
 libKF5ItemViews.so.5 kitemviews-5.26.0_1
 libunicorn.so.1 unicorn-1.0_1
@@ -2462,7 +2480,7 @@ libsignon-qt5.so.1 signond-8.58_1
 libsignon-plugins-common.so.1 signond-8.58_1
 libsignon-extension.so.1 signond-8.58_1
 libj4status-plugin.so.0 j4status-0.1_1
-libvirglrenderer.so.0 virglrenderer-0.5.0_1
+libvirglrenderer.so.1 virglrenderer-0.5.0_1
 libglpk.so.40 glpk-4.60_1
 libipmimonitoring.so.6 freeipmi-1.5.7_1
 libipmiconsole.so.2 freeipmi-1.5.1_1
@@ -2750,27 +2768,27 @@ libkea-asiolink.so.6 libkea-1.7.1_1
 libkea-cc.so.8 libkea-1.6.0_1
 libkea-cfgclient.so.8 libkea-1.7.0_1
 libkea-cryptolink.so.5 libkea-1.7.0_1
-libkea-database.so.5 libkea-1.7.0_1
-libkea-dhcp++.so.14 libkea-1.7.1_1
+libkea-database.so.4 libkea-1.7.2_1
+libkea-dhcp++.so.13 libkea-1.7.2_1
 libkea-dhcp_ddns.so.2 libkea-1.7.0_1
 libkea-dhcpsrv.so.18 libkea-1.7.1_1
 libkea-dns++.so.3 libkea-1.5.0_1
 libkea-eval.so.12 libkea-1.7.0_1
 libkea-exceptions.so.0 libkea-1.1.0_1
 libkea-hooks.so.9 libkea-1.7.1_1
-libkea-http.so.7 libkea-1.7.0_1
+libkea-http.so.6 libkea-1.7.2_1
 libkea-log.so.5 libkea-1.7.0_1
 libkea-pgsql.so.0 libkea-1.7.1_1
-libkea-process.so.4 libkea-1.6.0_1
+libkea-process.so.3 libkea-1.7.2_1
 libkea-stats.so.3 libkea-1.6.0_1
 libkea-threads.so.3 libkea-1.7.0_1
 libkea-util-io.so.0 libkea-1.1.0_1
-libkea-util.so.9 libkea-1.7.1_1
+libkea-util.so.8 libkea-1.7.2_1
 libytnef.so.0 ytnef-1.8_1
 libpisock.so.9 pilot-link-0.12.5_1
 libpisync.so.1 pilot-link-0.12.5_1
 libpitcl.so.0 pilot-link-0.12.5_1
-libiscsi.so.8 libiscsi-1.18.0_1
+libiscsi.so.9 libiscsi-1.19.0_1
 libgme.so.0 libgme-0.6.1_1
 libsidplayfp.so.5 libsidplayfp-2.0.0_1
 libstilview.so.0 libsidplayfp-1.8.7_1
@@ -2781,7 +2799,7 @@ libnma.so.0 libnm-gtk-1.4.0_1
 libgspell-1.so.2 gspell-1.8.0_1
 libotf.so.1 libotf-0.9.16_1
 libimagequant.so.0 libimagequant-2.8.2_1
-libDOtherSide.so.0 dotherside-0.5.2_1
+libDOtherSide.so.0.6 dotherside-0.6.5_1
 libstlink.so.1 stlink-1.5.1_1
 libopencsg.so.1 opencsg-1.4.2_1
 libCGAL.so.13 cgal-4.10_1
@@ -2959,7 +2977,7 @@ libgfshare.so.2 libgfshare-2.0.0_1
 libtracker-miner-2.0.so.0 libtracker-2.0.1_1
 libtacacs.so.1 tacacs-4.0.4.28_1
 libffms2.so.4 libffms2-2.23.1_1
-libddcutil.so.1 ddcutil-0.9.7_1
+libddcutil.so.2 ddcutil-0.9.8_1
 liblsmash.so.2 liblsmash-2.9.1_1
 libgiac.so.0 libgiac-1.4.9r17_1
 libgnustep-base.so.1.26 gnustep-base-1.26.0_1
@@ -3280,7 +3298,7 @@ libkid3-gui.so.3.8.0 kid3-3.8.0_1
 libcfitsio.so.3 cfitsio-3.450_1
 libapparmor.so.1 libapparmor-2.12.0_1
 libgsettings-qt.so.1 gsettings-qt-0.1+17.10.20170824_1
-libplacebo.so.21 libplacebo-1.21.0_1
+libplacebo.so.29 libplacebo-1.29.0_1
 libw2xc.so waifu2x-converter-cpp-5.2_1
 libnova-0.15.so.0 libnova-0.15.0_1
 libdtkcore.so.2 dtkcore-2.0.6_1
@@ -3291,7 +3309,7 @@ libdtkwm.so.2 dtkwm-2.0.6_1
 libticonv.so.8 libticonv-1.1.5_1
 libtifiles2.so.10 libtifiles2-1.1.7_1
 libticables2.so.7 libticables2-1.3.5_1
-libticalcse.so.12 libticalcs2-1.1.9_1
+libticalcs2.so.12 libticalcs2-1.1.9_1
 libhtmlcxx.so.3 htmlcxx-0.86_1
 libcss_parser_pp.so.0 htmlcxx-0.86_1
 libcss_parser.so.0 htmlcxx-0.86_1
@@ -3452,7 +3470,7 @@ libappmenu-gtk2-parser.so.0 appmenu-gtk-module-0.7.1_1
 libappmenu-gtk3-parser.so.0 appmenu-gtk3-module-0.7.1_1
 libqhttpengine.so.1 qhttpengine-1.0.1_1
 libqmdnsengine.so.0 qmdnsengine-0.1.0_1
-libyang.so.0.16 libyang-0.16r3_1
+libyang.so.1 libyang-1.0r5_1
 libhtp.so.2 libhtp-0.5.30_1
 libgedit-3.14.so gedit-3.32.0_1
 libchewing.so.3 libchewing-0.5.1_1
@@ -3481,17 +3499,18 @@ liboblibs.so.0.0 oblibs-0.0.1.1_1
 libaal-1.0.so.7 libaal-1.0.7_1
 libaal-minimal.so.0 libaal-1.0.7_1
 libcli.so.1.9 libcli-1.9.8.4_1
-libaddress_sorting.so.8 grpc-1.24.1_1
-libgpr.so.8 grpc-1.24.1_1
+libaddress_sorting.so.9 grpc-1.26.0_1
+libgpr.so.9 grpc-1.26.0_1
 libgrpc++.so.1 grpc-1.19.1_1
 libgrpc++_cronet.so.1 grpc-1.19.1_1
 libgrpc++_error_details.so.1 grpc-1.19.1_1
 libgrpc++_reflection.so.1 grpc-1.19.1_1
 libgrpc++_unsecure.so.1 grpc-1.19.1_1
-libgrpc.so.8 grpc-1.24.1_1
-libgrpc_cronet.so.8 grpc-1.24.1_1
-libgrpc_unsecure.so.8 grpc-1.24.1_1
+libgrpc.so.9 grpc-1.26.0_1
+libgrpc_cronet.so.9 grpc-1.26.0_1
+libgrpc_unsecure.so.9 grpc-1.26.0_1
 libgrpcpp_channelz.so.1 grpc-1.19.1_1
+libupb.so.9 grpc-1.26.0_1
 libircclient.so.1 libircclient-1.10_1
 libFAudio.so.0 FAudio-19.05_1
 libqaccessibilityclient-qt5.so.0 libqaccessibilityclient-0.4.0_1
@@ -3503,7 +3522,7 @@ libflite_cmu_us_kal.so.1 flite-2.1_1
 libflite_usenglish.so.1 flite-2.1_1
 libflite_cmulex.so.1 flite-2.1_1
 libgtk-4.so.0.9400.0 gtk4-3.94.0_1
-libmodule.so.4 libmodule-4.1.0_1
+libmodule.so.5 libmodule-5.0.0_1
 libgnustep-gui.so.0.27 gnustep-gui-0.27.0_1
 libmhash.so.2 mhash-0.9.9.9_1
 librlottie.so.0 rlottie-0.0.20160709_1
@@ -3677,3 +3696,16 @@ libgcj-tools.so.17 libgcj-6.5.0_1
 libgcj_bc.so.1 libgcj-6.5.0_1
 libgcj.so.17 libgcj-6.5.0_1
 libgij.so.17 libgcj-6.5.0_1
+libtty.so.1 libtermrec-0.18_1
+libtss2-mu.so.0 tpm2-tss-2.3.1_1
+libtss2-esys.so.0 tpm2-tss-2.3.1_1
+libtss2-sys.so.0 tpm2-tss-2.3.1_1
+libtss2-tcti-device.so.0 tpm2-tss-2.3.1_1
+libtss2-rc.so.0 tpm2-tss-2.3.1_1
+libtss2-tcti-mssim.so.0 tpm2-tss-2.3.1_1
+libtss2-tctildr.so.0 tpm2-tss-2.3.1_1
+libzfs.so.2 zfs-0.8.2_1
+libnvpair.so.1 zfs-0.8.2_1
+libjsonnet.so.0 jsonnet-0.14.0_2
+libjsonnet++.so.0 jsonnet-0.14.0_2
+libigdgmm.so.12 intel-gmmlib-19.3.4_1
