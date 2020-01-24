@@ -1,0 +1,23 @@
+# Template file for 'tridactyl-native'
+pkgname=tridactyl-native
+version=1.17.1
+revision=1
+wrksrc=tridactyl-${version}
+depends="python3"
+short_desc="Tridactyl's native host application for Firefox"
+maintainer="León Illanes <lillanes@cs.toronto.edu>"
+license="Apache-2.0"
+homepage="https://github.com/tridactyl/tridactyl"
+distfiles="https://github.com/tridactyl/tridactyl/archive/${version}.tar.gz"
+checksum=f7d91ba00304191f20c22de0c3330f246d6461ff4633b3fed9600a361b21d72b
+
+do_configure() {
+	vsed -i -e \
+		"s-REPLACE_ME_WITH_SED-/usr/libexec/tridactyl/native_main.py-" \
+		"native/tridactyl.json"
+}
+
+do_install() {
+	vinstall native/native_main.py 755 usr/libexec/tridactyl
+	vinstall native/tridactyl.json 644 usr/lib/mozilla/native-messaging-hosts
+}
