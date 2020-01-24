@@ -1,14 +1,14 @@
 # Template file for 'linux5.4'
 pkgname=linux5.4
-version=5.4.10
-revision=2
+version=5.4.14
+revision=1
 wrksrc="linux-${version}"
 short_desc="Linux kernel and modules (${version%.*} series)"
 maintainer="Helmut Pozimski <helmut@pozimski.eu>"
 license="GPL-2.0-only"
 homepage="https://www.kernel.org"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version}.tar.xz"
-checksum=f23c0218a5e3b363bb5a880972f507bb4dc4a290a787a7da08be07ea12042edd
+checksum=531e18b0eef516fa4b3843f89729fafbf3c6bc00325b082cc1f2cfcb28c8d7f0
 patch_args="-Np1"
 
 nodebug=yes  # -dbg package is generated below manually
