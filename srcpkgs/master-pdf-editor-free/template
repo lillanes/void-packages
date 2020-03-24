@@ -1,4 +1,4 @@
-# Template file for 'master-pdf-editor'
+# Template file for 'master-pdf-editor-free'
 pkgname=master-pdf-editor-free
 version=4.3.89
 revision=1
@@ -6,7 +6,7 @@ archs="x86_64"
 wrksrc="master-pdf-editor-4"
 depends="desktop-file-utils"
 short_desc="Multifunctional PDF Editor"
-maintainer="Giuseppe Fierro <gspe@ae-design.ws>"
+maintainer="León Illanes <lillanes@cs.toronto.edu>"
 license="custom:Proprietary"
 homepage="https://code-industry.net/free-pdf-editor/"
 distfiles="https://code-industry.net/public/master-pdf-editor-${version}_qt5.amd64.tar.gz"
@@ -16,8 +16,6 @@ repository=nonfree
 
 do_install() {
 	vlicense license.txt
-	# vinstall masterpdfeditor5.desktop 644 usr/share/applications
-	# rm {license.txt,masterpdfeditor5.desktop}
 
 	vmkdir opt/master-pdf-editor-4
 	vcopy * opt/master-pdf-editor-4
