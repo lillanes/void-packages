@@ -1,6 +1,6 @@
 # Template file for 'wireguard-dkms'
 pkgname=wireguard-dkms
-version=0.0.20200318
+version=1.0.20200426
 revision=1
 wrksrc="wireguard-linux-compat-${version}"
 build_wrksrc="src"
@@ -10,7 +10,7 @@ maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="GPL-2.0-only"
 homepage="https://www.wireguard.com/"
 distfiles="https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-${version}.tar.xz"
-checksum=fa74a8627f731754fbf4ea7d6ae8f571a2cfe8cd4b744a5f165065619cb836a1
+checksum=c18c7fdb2b51b61ac1748c811824b0ff726235f2d7fa5b54938bff2e70988ec9
 
 dkms_modules="wireguard ${version}"
 

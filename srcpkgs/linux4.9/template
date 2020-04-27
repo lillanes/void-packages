@@ -1,15 +1,16 @@
 # Template file for 'linux4.9'
 pkgname=linux4.9
-version=4.9.215
+version=4.9.218
 revision=1
-patch_args="-Np1"
 wrksrc="linux-${version}"
-maintainer="Orphaned <orphan@voidlinux.org>"
-homepage="https://www.kernel.org"
-license="GPL-2.0-only"
 short_desc="Linux kernel and modules (${version%.*} series)"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="GPL-2.0-only"
+homepage="https://www.kernel.org"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${version}.tar.xz"
-checksum=236f2f47853700f22b9925cb17917d97ff7120fcc8110ec827c5a030a8129f48
+checksum=df3a6e615ec4c57b04775e9c018c67045223ac662e696d28fd37baa5114349cd
+python_version=2 #unverified
+patch_args="-Np1"
 
 nodebug=yes  # -dbg package is generated below manually
 nostrip=yes
@@ -17,7 +18,7 @@ noverifyrdeps=yes
 noshlibprovides=yes
 preserve=yes
 
-archs="i686* x86_64* armv7l* aarch64* ppc*"
+archs="i686* x86_64* aarch64* ppc*"
 hostmakedepends="bc perl kmod uboot-mkimage libressl-devel"
 
 case "$XBPS_TARGET_MACHINE" in
