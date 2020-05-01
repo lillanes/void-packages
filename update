@@ -1,0 +1,10 @@
+#! /bin/sh
+
+cd $(dirname "$0") || exit 1
+
+./xbps-src binary-bootstrap
+./xbps-src bootstrap-update
+
+ while read -r package ; do
+     ./xbps-src pkg "${package}"
+ done < ./etc/packages
