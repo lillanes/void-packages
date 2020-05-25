@@ -1,0 +1,8 @@
+#
+# Clears the saved keepbright state before uninstalling
+#
+case "$ACTION" in
+    pre)
+        keepbright clear
+    ;;
+esac
