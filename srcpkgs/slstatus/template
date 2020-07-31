@@ -1,7 +1,7 @@
 # Template file for 'slstatus'
 pkgname=slstatus
 version=0.0.0.lillanes
-revision=1
+revision=2
 build_style=gnu-makefile
 makedepends="git alsa-lib-devel libX11-devel"
 short_desc="Suckless status monitor for dwm"
