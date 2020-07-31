@@ -2,9 +2,11 @@
 
 cd $(dirname "$0") || exit 1
 
-./xbps-src binary-bootstrap
-./xbps-src bootstrap-update
+while read -r package ; do
+    ./xbps-src pkg "${package}"
+done < ./etc/packages
 
- while read -r package ; do
-     ./xbps-src pkg "${package}"
- done < ./etc/packages
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+xbps-rindex -r "$PWD/hostdir/binpkgs/$BRANCH"
+xbps-rindex -r "$PWD/hostdir/binpkgs/$BRANCH/nonfree"
+
