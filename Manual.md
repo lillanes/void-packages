@@ -64,6 +64,7 @@ packages for XBPS, the `Void Linux` native packaging system.
 		* [pycompile](#triggers_pycompile)
 		* [register-shell](#triggers_register_shell)
 		* [system-accounts](#triggers_system_accounts)
+		* [texmf-dist](#triggers_texmf_dist)
 		* [update-desktopdb](#triggers_update_desktopdb)
 		* [x11-fonts](#triggers_x11_fonts)
 		* [xml-catalog](#triggers_xml_catalog)
@@ -134,6 +135,11 @@ the Void packages system.
 
 1. Required: Another package either within the repository or pending inclusion
    requires the package.
+
+In particular, new themes and small shell scripts are highly unlikely
+to be accepted. New fonts are welcome if they provide value beyond
+aesthetics (e.g. they contain glyphs for a script missing in already
+packaged fonts).
 
 <a id="buildphase"></a>
 ### Package build phases
@@ -330,6 +336,13 @@ The following functions are defined by `xbps-src` and can be used on any templat
 
 	Note that vsed will call the sed command for every regex specified against
 	every file specified, in the order that they are given.
+
+- *vcompletion()* `<file> <shell> [<command>]`
+
+	Installs shell completion from `file` for `command`, in the correct location
+	and with the appropriate filename for `shell`. If `command` isn't specified,
+	it will default to `pkgname`. The `shell` argument can be one of `bash`,
+	`fish` or `zsh`.
 
 > Shell wildcards must be properly quoted, Example: `vmove "usr/lib/*.a"`.
 
@@ -931,6 +944,9 @@ Environment variables for a specific `build_style` can be declared in a filename
 matching the `build_style` name, Example:
 
     `common/environment/build-style/gnu-configure.sh`
+    
+- `texmf` For texmf zip/tarballs that need to go into /usr/share/texmf-dist. Includes
+duplicates handling.
 
 <a id="build_helper"></a>
 ### build helper scripts
@@ -954,7 +970,9 @@ additional paths to be searched when linking target binaries to be introspected.
 - `qemu` sets additional variables for the `cmake` and `meson` build styles to allow
 executing cross-compiled binaries inside qemu.
 It sets `CMAKE_CROSSCOMPILING_EMULATOR` for cmake and `exe_wrapper` for meson
-to `qemu-<target_arch>-static` and `QEMU_LD_PREFIX` to `XBPS_CROSS_BASE`
+to `qemu-<target_arch>-static` and `QEMU_LD_PREFIX` to `XBPS_CROSS_BASE`.
+It also creates the `vtargetrun` function to wrap commands in a call to
+`qemu-<target_arch>-static` for the target architecture.
 
 - `qmake` creates the `qt.conf` configuration file (cf. `qmake` `build_style`)
 needed for cross builds and a qmake-wrapper to make `qmake` use this configuration.
@@ -1904,6 +1922,20 @@ Example: `transmission unprivileged user - for uninstalled package transmission`
 
 This trigger can only be used by using the `system_accounts` variable.
 
+<a id="triggers_texmf_dist"></a>
+#### texmf-dist
+
+The texmf-dist trigger is responsible for regenerating TeXLive's texmf databases.
+
+During both installation and removal, it regenerates both the texhash and format
+databases using `texhash` and `fmtutil-sys`, to add or remove any new hashes or
+formats.
+
+It runs on every package that changes /usr/share/texmf-dist. This is likely overkill,
+but it is much cleaner rather than checking each format directory and each directory
+that is hashed. In addition, it is very likely any package touching /usr/share/texmf-dist
+requires one of these triggers anyway.
+
 <a id="triggers_update_desktopdb"></a>
 #### update-desktopdb
 
@@ -1972,9 +2004,8 @@ Fork the voidlinux `void-packages` git repository on github and clone it:
 
     $ git clone git@github.com:<user>/void-packages.git
 
-See [CONTRIBUTING.md](https://github.com/void-linux/void-packages/blob/master/CONTRIBUTING.md)
-for information on how to format your commits and other tips for
-contributing.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for information on how to format your
+commits and other tips for contributing.
 
 Once you've made changes to your `forked` repository you can submit
 a github pull request; see https://help.github.com/articles/fork-a-repo for more information.
