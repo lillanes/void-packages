@@ -3,7 +3,7 @@
 cd $(dirname "$0") || exit 1
 
 while read -r package ; do
-    ./xbps-src pkg "${package}"
+    ./xbps-src pkg "${package}" -E
 done < ./etc/packages
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
