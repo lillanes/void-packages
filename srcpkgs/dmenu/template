@@ -1,6 +1,6 @@
 # Template file for 'dmenu'
 pkgname=dmenu
-version=4.9.lillanes
+version=5.0.lillanes
 revision=1
 makedepends="git libXinerama-devel libXft-devel freetype-devel"
 short_desc="Generic menu for X"
@@ -13,7 +13,11 @@ do_fetch() {
 	git clone ${_repository} ${wrksrc}
 }
 
-post_extract() {
+post_patch() {
+	if [ "$build_option_fuzzymatch" ]; then
+		msg_normal "Applying fuzzymatch patches"
+		patch -slNp1 < "${FILESDIR}/fuzzymatch.patch"
+	fi
 	sed -i -e '/CFLAGS/{s/-Os//;s/=/+=/}' \
 		-e '/LDFLAGS/{s/-s//;s/=/+=/}' config.mk
 }
