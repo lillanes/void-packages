@@ -1,7 +1,7 @@
 # Template file for 'xorg-server'
 pkgname=xorg-server
 version=1.20.9
-revision=2
+revision=3
 build_style=meson
 configure_args="-Dipv6=true -Dxorg=true -Dxnest=true -Dxephyr=true
  -Dxvfb=true -Dhal=false -Dudev=true -Dxkb_dir=/usr/share/X11/xkb
@@ -47,6 +47,8 @@ case "$XBPS_TARGET_MACHINE" in
 	makedepends+=" libtirpc-devel" ;;
 esac
 
+# gcc10 needs to be hinted when symbols have multiple definitions
+CFLAGS="-fcommon"
 
 # Symbols must be resolved lazily for modules to work.
 # See https://bugs.freedesktop.org/show_bug.cgi?id=41208#c5
