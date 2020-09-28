@@ -351,7 +351,7 @@ libMagickCore-6.Q16.so.6 libmagick6-6.9.10.11_1
 libMagickWand-6.Q16.so.6 libmagick6-6.9.10.11_1
 libMagick++-6.Q16.so.8 libmagick6-6.9.10.11_1
 libltdl.so.7 libltdl-2.2.6_1
-libpoppler.so.90 libpoppler89-0.80.0_1
+libpoppler.so.102 libpoppler102-20.09.0_1
 libpoppler-glib.so.8 poppler-glib-0.18.2_1
 libpoppler-cpp.so.0 poppler-cpp-0.18.2_1
 libpoppler-qt5.so.1 poppler-qt5-0.31.0_1
@@ -755,7 +755,7 @@ libxfce4kbd-private-3.so.0 libxfce4ui-4.12.1_2
 libxml++-2.6.so.2 libxml++-2.32.0_1
 libxml++-3.0.so.1 libxml++3.0-3.0.1_1
 libftgl.so.2 ftgl-2.1.2_1
-libGLEW.so.2.1 glew-2.1.0_1
+libGLEW.so.2.2 glew-2.2.0_1
 libsndfile.so.1 libsndfile-1.0.20_1
 libspeex.so.1 libspeex-1.1_1
 libspeexdsp.so.1 speexdsp-1.2rc2_1
@@ -765,6 +765,7 @@ libpulse-mainloop-glib.so.0 libpulseaudio-1.0_1
 libpulse-simple.so.0 libpulseaudio-1.0_1
 libpulsecommon-13.0.so libpulseaudio-13.0_1
 libpulsecore-13.0.so libpulseaudio-13.0_1
+libprojectM.so.3 projectM-3.1.7_2
 liborc-0.4.so.0 orc-0.4.11_1
 liborc-test-0.4.so.0 orc-0.4.11_1
 libgmime-2.6.so.0 gmime-2.6.4_1
@@ -3016,7 +3017,7 @@ libslopy.so.7.5 slop-7.5_1
 libbcunit.so.1 bcunit-3.0_1
 libzbar.so.0 libzbar-0.10_1
 libzbargtk.so.0 libzbar-0.10_1
-libzbarqt.so.0 libzbar-0.10_1
+libzbarqt.so.0 libzbar-0.10_10
 libargtable2.so.0 argtable-2.13_1
 libomxil-bellagio.so.0 libomxil-bellagio-0.9.3_1
 libomxdynamicloader.so.0 libomxil-bellagio-0.9.3_1
@@ -3928,8 +3929,8 @@ libco.so.0 libco-20_1
 libraft.so.0 raft-0.9.16_1
 libmdnsd.so.1 libmdnsd-0.9_1
 libPtex.so ptex-2.3.2_1
-libosdGPU.so.3.4.0 OpenSubdiv-3.4.0_1
-libosdCPU.so.3.4.0 OpenSubdiv-3.4.0_1
+libosdGPU.so.3.4.3 OpenSubdiv-3.4.3_1
+libosdCPU.so.3.4.3 OpenSubdiv-3.4.3_1
 libdino.so.0 dino-0.1.0_1
 libxmpp-vala.so.0 dino-0.1.0_1
 libqlite.so.0 dino-0.1.0_1
