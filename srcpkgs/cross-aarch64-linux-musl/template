@@ -12,7 +12,7 @@ _sysroot="/usr/${_triplet}"
 
 pkgname=cross-${_triplet}
 version=0.33
-revision=3
+revision=4
 short_desc="Cross toolchain for ARM64 LE target (musl)"
 maintainer="Orphaned <orphan@voidlinux.org>"
 homepage="https://www.voidlinux.org/"
@@ -91,6 +91,7 @@ _gcc_bootstrap() {
 
 	cd ${wrksrc}/gcc-${_gcc_version}
 	_apply_patch -p0 ${FILESDIR}/fix-cxxflags-passing.patch
+	_apply_patch -p0 ${FILESDIR}/use-pure-64bit-configs.patch
 	_apply_patch -p0 ${FILESDIR}/musl-ada.patch
 	_apply_patch -p1 ${FILESDIR}/libgnarl-musl.patch
 	_apply_patch -p1 ${FILESDIR}/libssp-musl.patch
