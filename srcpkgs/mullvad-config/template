@@ -1,0 +1,29 @@
+# Template file for 'mullvad-config'
+pkgname=mullvad-config
+version=0.0.0.lillanes
+revision=1
+makedepends="git"
+depends="iputils runit wireguard-tools"
+make_dirs="/var/lib/mullvad 0755 root root"
+short_desc="Simple scripts to manage Mullvad connections"
+maintainer="León Illanes <lillanes@cs.toronto.edu>"
+license="MIT"
+homepage="https://github.com/lillanes/mullvad-config"
+_repository="https://github.com/lillanes/mullvad-config.git"
+
+do_fetch() {
+	git clone ${_repository} ${wrksrc}
+}
+
+do_install() {
+	vdoc README.md
+	vlicense LICENSE
+
+	vbin mullvad
+	vbin mullvbest
+
+	vinstall service/run 755 etc/sv/mullvad
+	vinstall service/finish 755 etc/sv/mullvad
+
+	ln -s /run/runit/supervise.mullvad ${PKGDESTDIR}/etc/sv/mullvad/supervise
+}

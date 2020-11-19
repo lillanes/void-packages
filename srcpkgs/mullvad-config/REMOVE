@@ -1,0 +1,8 @@
+#
+# Clears the selected mullvad server before uninstalling
+#
+case "$ACTION" in
+    pre)
+        rm /var/lib/mullvad/selected
+    ;;
+esac
