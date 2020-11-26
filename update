@@ -3,6 +3,7 @@
 cd $(dirname "$0") || exit 1
 
 while read -r package ; do
+    printf "Checking ${package}...\n"
     ./xbps-src pkg "${package}" -E
 done < ./etc/packages
 
