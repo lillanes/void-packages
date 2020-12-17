@@ -1,0 +1,13 @@
+# Template file for 'legendary'
+pkgname=legendary
+version=0.20.4
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="python3-requests python3-wheel"
+short_desc="Free and open-source replacement for the Epic Games Launcher"
+maintainer="Lorem <notloremipsum@protonmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/derrod/legendary"
+distfiles="https://github.com/derrod/legendary/archive/${version}.tar.gz"
+checksum=b91a47a9aa185247728bd3c97dff7c427bc14fd2bf35b34060543b6e985a6380
