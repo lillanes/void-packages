@@ -1,6 +1,6 @@
 # INSTALL
 
-checksum=4bc68502dc5e22d5c264b3fb5d0a1ecfdadc3ba21d945646d8d37de4b8a96e58
+checksum=4c3fca6ba917db4635368c99df61cd811c5138daa1ad890d4dc4271dd0014124
 _baseUrl="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable"
 _filename="google-chrome-stable_${VERSION%_*}-1_amd64.deb"
 DISTFILE="${_baseUrl}/${_filename}"

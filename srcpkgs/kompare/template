@@ -1,6 +1,6 @@
 # Template file for 'kompare'
 pkgname=kompare
-version=20.08.3
+version=20.12.1
 revision=1
 build_style=cmake
 hostmakedepends="extra-cmake-modules gettext kcoreaddons kdoctools
@@ -11,4 +11,4 @@ maintainer="Piotr Wójcik <chocimier@tlen.pl>"
 license="GPL-2.0-only, GFDL-1.2-only"
 homepage="https://www.kde.org/applications/development/kompare/"
 distfiles="${KDE_SITE}/release-service/${version}/src/kompare-${version}.tar.xz"
-checksum=8c467048639e6c078d8142d500bb9720972534beee12e19b9b6dc1c4d9163565
+checksum=10b32f0556e8094ab6276c66d018310e47be0314c915ad9872f4f7737f43b18d

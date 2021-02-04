@@ -1,6 +1,6 @@
 # Template file for 'element-desktop'
 pkgname=element-desktop
-version=1.7.14
+version=1.7.19
 revision=1
 wrksrc="element-web-${version}"
 conf_files="/etc/${pkgname}/config.json"
@@ -18,14 +18,13 @@ _ghpage="https://github.com/vector-im"
 _archive="archive/v${version}.tar.gz"
 distfiles="${_ghpage}/element-desktop/${_archive}>element-desktop.tar.gz
  ${_ghpage}/element-web/${_archive}>element-web.tar.gz"
-checksum="15f332f03b03a4ea585ea47b033f77ccd9a6e1f77b6a9e886d7940300fc0f8d5
- 863db71b73169b30b5ee3829ab6a488ed054d293cf80d6226b267ce2efcacdc2"
-nocross="depends on electron9"
+checksum="ab2543cf87614d82f3d070249c9890ac57b02a5ae1d7ed8140fcc56d1c1f8bd6
+ f2817b02b80106b8fee307cc7f0ecff1c735111407acd4fb92363a8457d5ea80"
 
 export USE_SYSTEM_APP_BUILDER=true
 
 pre_build() {
-	# Build dependencies for riot-web
+	# Build dependencies for element-web
 	yarn install
 
 	# Build dependencies and alterations for element-desktop
