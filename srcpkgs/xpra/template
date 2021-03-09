@@ -1,9 +1,10 @@
 # Template file for 'xpra'
 pkgname=xpra
-version=4.1
+version=4.1.1
 revision=1
 build_style=python3-module
-hostmakedepends="pkg-config python3-Cython pandoc"
+make_install_args="$(vopt_with docs)"
+hostmakedepends="pkg-config python3-Cython $(vopt_if docs pandoc)"
 makedepends="ffmpeg-devel libXcomposite-devel libXrandr-devel libXtst-devel
  libvpx-devel libwebp-devel libxkbfile-devel python3-gobject-devel x264-devel
  gtk+3-devel pam-devel"
@@ -16,10 +17,17 @@ license="GPL-2.0-or-later"
 homepage="https://xpra.org/"
 changelog="https://raw.githubusercontent.com/Xpra-org/xpra/master/docs/CHANGELOG.md"
 distfiles="https://github.com/Xpra-org/xpra/archive/v${version}.tar.gz"
-checksum=a8413b34015b7c55f1226776f87bd1a01c427c3a25b4ebf4eb8b79c64b52cc8a
+checksum=7958ddd3aadcffad5e06c80e44e54d7528db73ed68f8cd2e64753ae15f62e177
 conf_files="/etc/xpra/xpra.conf /etc/xpra/xorg.conf /etc/xpra/conf.d/*"
 
 system_groups="xpra"
+
+build_options="docs"
+desc_option_docs="Enable documentation"
+
+case "$XBPS_MACHINE" in
+	x86_64*|i686*|ppc64le*) build_options_default="docs" ;;
+esac
 
 if [ -z "$CROSS_BUILD" ]; then
 	depends+=" python3-PyOpenGL-accelerate"
