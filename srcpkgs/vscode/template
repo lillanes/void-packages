@@ -1,17 +1,17 @@
 # Template file for 'vscode'
 pkgname=vscode
-version=1.55.1
-revision=1
-_electronver=9.4.1
+version=1.55.2
+revision=2
+_electronver=10.4.3
 hostmakedepends="pkg-config python nodejs yarn tar git"
-makedepends="libxkbfile-devel libsecret-devel electron9"
-depends="libXtst libxkbfile nss dejavu-fonts-ttf xdg-utils ripgrep electron9"
+makedepends="libxkbfile-devel libsecret-devel electron10"
+depends="libXtst libxkbfile nss dejavu-fonts-ttf xdg-utils ripgrep electron10"
 short_desc="Microsoft Code for Linux"
 maintainer="shizonic <realtiaz@gmail.com>"
 license="MIT"
 homepage="https://code.visualstudio.com/"
 distfiles="https://github.com/Microsoft/vscode/archive/${version}.tar.gz"
-checksum=6fe56f9328ded06b38b29de4f545fc82007006cac18bdea8961637e25025d4a2
+checksum=43cb929a0fd3d569ff8a734df7a97a02c3d1107eda4c195d97835e6d08432cbc
 patch_args="-Np1"
 
 if [ "$XBPS_TARGET_WORDSIZE" = "32" ]; then
