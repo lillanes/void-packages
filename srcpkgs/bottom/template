@@ -1,14 +1,15 @@
 # Template file for 'bottom'
 pkgname=bottom
-version=0.6.1
+version=0.6.6
 revision=1
 build_style=cargo
 short_desc="Yet another cross-platform graphical process/system monitor"
 maintainer="Neel Chotai <neel@chot.ai>"
 license="MIT"
 homepage="https://github.com/ClementTsang/bottom"
+changelog="https://raw.githubusercontent.com/ClementTsang/bottom/master/CHANGELOG.md"
 distfiles="https://github.com/ClementTsang/bottom/archive/${version}.tar.gz"
-checksum=aa9c26e7e8e1300e9827c098317efa28cc28ae8acabfdb12f14e4ba65f42a57c
+checksum=102932d73a5b053c81bb7d9a7a8af35a0da1f9f391a62a58ba5cd1702daf4429
 
 post_install() {
 	vdoc README.md

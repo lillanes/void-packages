@@ -1,9 +1,9 @@
 # Template file for 'dbeaver'
 pkgname=dbeaver
-version=21.1.0
+version=21.3.2
 revision=1
 # the build downloads binaries linked to glibc
-archs="x86_64"
+archs="x86_64 aarch64"
 hostmakedepends="apache-maven"
 depends="openjdk11" # openjdk11 or later version, when available
 short_desc="Free Universal Database Tool"
@@ -11,16 +11,16 @@ maintainer="Kyle Nusbaum <knusbaum+void@sdf.org>"
 license="Apache-2.0"
 homepage="https://dbeaver.io"
 distfiles="https://github.com/dbeaver/dbeaver/archive/${version}.tar.gz"
-checksum=95da7bdbcccea394fd997768f5a5a153db3153c68a39eaa4686b9e2b4cb86ab6
+checksum=aadf5184697fe3bb04aa0ae26d4e9854f92dd74961794b250459661fb6d578c6
 nopie=true
 
 do_build() {
-	mvn package
+	mvn package -P all-platforms
 }
 
 do_install() {
 	vmkdir /usr/lib
-	vcopy "product/community/target/products/org.jkiss.dbeaver.core.product/linux/gtk/x86_64/dbeaver" /usr/lib/
+	vcopy "product/community/target/products/org.jkiss.dbeaver.core.product/linux/gtk/${XBPS_TARGET_MACHINE}/dbeaver" /usr/lib/
 
 	vmkdir /usr/bin
 	ln -s /usr/lib/dbeaver/dbeaver ${DESTDIR}/usr/bin/dbeaver

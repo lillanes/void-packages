@@ -1,9 +1,8 @@
 # Template file for 'gzdoom'
 pkgname=gzdoom
-version=4.5.0
+version=4.7.1
 revision=1
-_tagdate=2021-10-31
-_widepix_commit=f4bb3541edd570cbccb58e5cdaba3dc0979208b9
+_tagdate=2021-10-20
 wrksrc="${pkgname}-g${version}"
 build_style=cmake
 configure_args="-DINSTALL_PK3_PATH=share/gzdoom -DDYN_GTK=OFF -DDYN_OPENAL=OFF"
@@ -15,11 +14,9 @@ license="GPL-3.0-or-later"
 homepage="https://www.zdoom.org"
 # WARNING: watch out for new submodules
 distfiles="https://github.com/coelckers/gzdoom/archive/g${version}.tar.gz
- https://github.com/coelckers/gzdoom/releases/download/g${version}/gzdoom_${version}_amd64.deb
- https://github.com/nashmuhandes/WidePix/archive/${_widepix_commit}.tar.gz"
-checksum="21eb1a221dae532a6c29f243584be3d5454f8eb4da85a67e405115f89666611d
- 2f07795728940fca07aa9771d5a8bb77f7764862b96cc5a4126a5b8db7a357b8
- e0b85ca089a3714968f56acc9525f352dbec14f15e88e0aef1cdece64c4f3cbf"
+ https://github.com/coelckers/gzdoom/releases/download/g${version}/gzdoom_${version}_amd64.deb"
+checksum="454257582be0576501eef1efc99fe7ea70f1c4d7993549db3cbc709ce75fc102
+ af1501c05815a7945a335704f6f05ac263c5877549fa3f476478077b56ea14f2"
 skip_extraction="${pkgname}_${version}_amd64.deb"
 nocross=yes
 
@@ -31,12 +28,14 @@ case "$XBPS_TARGET_MACHINE" in
 	i686*) configure_args+=" -DSSE_MATTERS=true" ;;
 esac
 
+if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
+	makedepends+=" libatomic-devel"
+	configure_args+=" -DCMAKE_CXX_STANDARD_LIBRARIES=-latomic"
+fi
+
 post_extract() {
 	bsdtar xOf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}_amd64.deb data.tar.xz |
 	tar --strip-components=4 -xJf - ./usr/share/{pixmaps/gzdoom.png,applications/gzdoom.desktop}
-
-	rmdir wadsrc_widescreen/static
-	mv ../WidePix-${_widepix_commit} wadsrc_widescreen/static
 }
 
 post_patch() {

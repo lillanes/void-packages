@@ -1,14 +1,17 @@
 # Template file for 'delta'
 pkgname=delta
-version=0.8.0
+version=0.11.3
 revision=1
 build_style=cargo
+checkdepends="git"
 short_desc="Syntax-highlighting pager for git"
 maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="MIT"
 homepage="https://github.com/dandavison/delta"
 distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=706b55667de221b651b0d938dfbb468112b322ed41a634d3ca5c8bd861b19e8a
+checksum=cf68f43d4d26c10551c0137a7e718719958e52267d83f29a8f7794af12095b9e
+make_check=no  # TODO: Re-enable checks when Rust gets updated
+nocross=yes # fails with current rust
 
 post_install() {
 	vlicense LICENSE

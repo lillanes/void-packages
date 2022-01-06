@@ -1,6 +1,6 @@
 # Template file for 'kmenuedit'
 pkgname=kmenuedit
-version=5.22.1
+version=5.23.5
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -13,4 +13,4 @@ maintainer="John <me@johnnynator.dev>"
 license="GPL-2.0-or-later"
 homepage="https://invent.kde.org/plasma/kmenuedit"
 distfiles="${KDE_SITE}/plasma/${version}/${pkgname}-${version}.tar.xz"
-checksum=4aaf25c64be71693a2dab0b4a022e6beafd39fd94261a6c20fca500b89f92b80
+checksum=821436fcb1a38b3d8e1c969119d7e1f326f02be1f1518baa51917f946e5c6d4c

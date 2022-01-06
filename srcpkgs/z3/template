@@ -1,6 +1,6 @@
 # Template file for 'z3'
 pkgname=z3
-version=4.8.11
+version=4.8.14
 revision=1
 wrksrc="${pkgname}-${pkgname}-${version}"
 build_style=configure
@@ -15,7 +15,7 @@ maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="MIT"
 homepage="https://github.com/Z3Prover/z3"
 distfiles="https://github.com/Z3Prover/z3/archive/z3-${version}.tar.gz"
-checksum=99e912b9af76a17f8827f89afcf4da117736f3877a8bbdd737c548c6541009d7
+checksum=96a1f49a7701120cc38bfa63c02ff93be4d64c7926cea41977dedec7d87a1364
 
 build_options="ocaml"
 desc_option_ocaml="Enable support for OCaml bindings"

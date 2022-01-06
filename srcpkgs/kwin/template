@@ -1,6 +1,6 @@
 # Template file for 'kwin'
 pkgname=kwin
-version=5.22.1
+version=5.23.5
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF
@@ -18,7 +18,7 @@ maintainer="John <me@johnnynator.dev>"
 license="GPL-2.0-or-later"
 homepage="https://invent.kde.org/plasma/kwin"
 distfiles="${KDE_SITE}/plasma/${version}/${pkgname}-${version}.tar.xz"
-checksum=5506ee878e151734893bbcc0a70d6499c894b8986488c9c57285de1deb422850
+checksum=f749e7e9b753d1ed1ae9655ea3cdec7d13946c64c820d4c85be2c0f95ac55f01
 
 build_options="pipewire"
 build_options_default="pipewire"

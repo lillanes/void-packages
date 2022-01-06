@@ -1,6 +1,6 @@
 # Template file for 'lf'
 pkgname=lf
-version=r23
+version=r26
 revision=1
 build_style=go
 go_import_path="github.com/gokcehan/${pkgname}"
@@ -10,7 +10,7 @@ maintainer="Daniel Lewan <vision360.daniel@gmail.com>"
 license="MIT"
 homepage="https://github.com/gokcehan/lf"
 distfiles="https://github.com/gokcehan/lf/archive/${version}.tar.gz"
-checksum=ae3a7d11e0b87ddb9fef2dc61de4c6f648039138fc69975cbdbd9fe126daa71c
+checksum=dccd1ad67d2639e47fe0cbc93d74f202d6d6f0c3759fb0237affb7b1a2b1379e
 
 post_install() {
 	vlicense LICENSE

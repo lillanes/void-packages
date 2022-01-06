@@ -19,7 +19,7 @@ do_fetch() {
 
 pre_build() {
 	# We will use tic after install. See INSTALL.
-	sed -i '/tic/d' Makefile
+	vsed -i Makefile -e '/tic/d'
 }
 
 post_install() {
@@ -30,6 +30,7 @@ post_install() {
 
 st-terminfo_package() {
 	short_desc+=" - terminfo data"
+	depends="ncurses"
 	pkg_install() {
 		vmove usr/share/terminfo
 	}

@@ -1,6 +1,6 @@
 # Template file for 'nqp'
 pkgname=nqp
-version=2021.05
+version=2021.12
 revision=1
 build_style=configure
 make_check_target=test
@@ -15,5 +15,5 @@ maintainer="Andy Weidenbaum <atweiden@tutanota.de>"
 license="Artistic-2.0"
 homepage="https://github.com/Raku/nqp"
 distfiles="https://rakudo.org/dl/nqp/${pkgname}-${version}.tar.gz"
-checksum=b43cf9d25a8b3187c7e132e1edda647d58bc353ca0fb534cc9aa0f8df7fff73f
+checksum=0e1d534fd1ee61a4c8072309bafbc04660e9ae72d88618daa0e8f15022f0d913
 nocross=yes

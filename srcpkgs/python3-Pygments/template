@@ -1,24 +1,22 @@
 # Template file for 'python3-Pygments'
 pkgname=python3-Pygments
-version=2.9.0
+version=2.11.1
 revision=1
 wrksrc="Pygments-${version}"
 build_style=python3-module
+# Ignored tests rely on unpackaged wcag_contrast_ratio module
+make_check_args="--ignore=tests/contrast/test_contrasts.py"
 hostmakedepends="python3-setuptools"
 depends="python3"
-checkdepends="python3-pytest"
+checkdepends="python3-pytest python3-lxml"
 short_desc="Generic syntax highlighter written in Python"
 maintainer="Andrew J. Hesford <ajh@sideband.org>"
 license="BSD-2-Clause"
 homepage="https://pygments.org"
 changelog="https://raw.githubusercontent.com/pygments/pygments/master/CHANGES"
 distfiles="${PYPI_SITE}/P/Pygments/Pygments-${version}.tar.gz"
-checksum=a18f47b506a429f6f4b9df81bb02beab9ca21d0a5fee38ed15aef65f0545519f
+checksum=59b895e326f0fb0d733fd28c6839bd18ad0687ba20efc26d4277fd1d30b971f4
 alternatives="pygments:pygmentize:/usr/bin/pygmentize3"
-
-do_check() {
-	python3 -m pytest
-}
 
 post_install() {
 	vlicense LICENSE

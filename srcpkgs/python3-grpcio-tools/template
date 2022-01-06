@@ -1,7 +1,7 @@
 # Template file for 'python3-grpcio-tools'
 pkgname=python3-grpcio-tools
-version=1.38.0
-revision=1
+version=1.39.0
+revision=2
 wrksrc="${pkgname#*-}-${version}"
 build_style=python3-module
 hostmakedepends="python3-setuptools"
@@ -9,11 +9,11 @@ makedepends="python3-devel"
 depends="python3-protobuf python3-grpcio"
 checkdepends="python3-pytest $depends"
 short_desc="Protobuf code generator for gRPC"
-maintainer="Andrew J. Hesford <ajh@sideband.org>"
+maintainer="Orphaned <orphan@voidlinux.org>"
 license="Apache-2.0"
 homepage="https://grpc.io"
 distfiles="${PYPI_SITE}/g/grpcio-tools/grpcio-tools-${version}.tar.gz"
-checksum=c609678cf6faf4b467259757f848de4fbc7baca3c1e3f7b0e55c701c50fd94ae
+checksum=39dfe7415bc0d3860fdb8dd90607594b046b88b57dbe64284efa4820f951c805
 
 if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
 	makedepends+=" libatomic-devel"

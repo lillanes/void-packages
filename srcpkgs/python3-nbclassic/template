@@ -1,6 +1,6 @@
 # Template file for 'python3-nbclassic'
 pkgname=python3-nbclassic
-version=0.2.8
+version=0.3.4
 revision=1
 wrksrc=nbclassic-${version}
 build_style=python3-module
@@ -11,7 +11,7 @@ maintainer="dkwo <nicolopiazzalunga@gmail.com>"
 license="BSD-3-Clause"
 homepage="https://jupyter.org"
 distfiles="${PYPI_SITE}/n/nbclassic/nbclassic-${version}.tar.gz"
-checksum=9553dcd9ae4d932db640dad0daa186fe6c64e69ec2159868c0b38d7adef9b3b5
+checksum=f00b07ef4908fc38fd332d2676ccd3ceea5076528feaf21bd27e809ef20f5578
 # Tarball includes no tests
 make_check=no
 
