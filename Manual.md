@@ -42,6 +42,7 @@ packages for XBPS, the `Void Linux` native packaging system.
 	* [Go packages](#pkgs_go)
 	* [Haskell packages](#pkgs_haskell)
 	* [Font packages](#pkgs_font)
+	* [Renaming a package](#pkg_rename)
 	* [Removing a package](#pkg_remove)
 	* [XBPS Triggers](#xbps_triggers)
 		* [appstream-cache](#triggers_appstream_cache)
@@ -644,7 +645,7 @@ Example: `conf_files="/etc/foo.conf /etc/foo2.conf /etc/foo/*.conf"`.
 default all binaries are stripped.
 
 - `nostrip_files` White-space separated list of ELF binaries that won't be stripped of
-debugging symbols.
+debugging symbols. Files can be given by full path or by filename.
 
 - `noshlibprovides` If set, the ELF binaries won't be inspected to collect the provided
 sonames in shared libraries.
@@ -690,7 +691,7 @@ This appends to the generated file rather than replacing it.
   features (PIE, relro, etc). Not necessary for most packages.
 
 - `nopie_files` White-space seperated list of ELF binaries that won't be checked
-for PIE.
+for PIE. Files must be given by full path.
 
 - `reverts` xbps supports a unique feature which allows to downgrade from broken
 packages automatically. In the `reverts` field one can define a list of broken
@@ -750,6 +751,9 @@ built for, available architectures can be found under `common/cross-profiles`.
 In general, `archs` should only be set if the upstream software explicitly targets
 certain architectures or there is a compelling reason why the software should not be
 available on some supported architectures.
+Prepending pattern with tilde means disallowing build on indicated archs.
+First matching pattern is taken to allow/deny build. When no pattern matches,
+package is build if last pattern includes tilde.
 Examples:
 
 	```
@@ -1656,6 +1660,18 @@ cache during the install/removal of the package
 - `font_dirs`: which should be set to the directory where the package
 installs its fonts
 
+<a id="pkg_rename"></a>
+### Renaming a package
+
+- Create empty package of old name, depending on new package. This is
+necessary to provide updates to systems where old package is already
+installed. This should be a subpackage of new one, except when version
+number of new package decreased: then create a separate template using
+old version and increased revision.
+- Edit references to package in other templates and common/shlibs.
+- Don't set `replaces=`, it can result in removing both packages from
+systems by xbps.
+
 <a id="pkg_remove"></a>
 ### Removing a package
 
@@ -1913,7 +1929,7 @@ Although `xbps-src` will automatically include the `dkms` trigger whenever
 before the modules are compiled.
 
 By default, the trigger uses `dracut --regenerate-all` to recreate initramfs
-images. If `/etc/defalt/initramfs-regenerate` exists and defines
+images. If `/etc/default/initramfs-regenerate` exists and defines
 `INITRAMFS_GENERATOR=mkinitcpio`, the trigger will instead use `mkinitcpio` and
 loop over all kernel versions for which modules appear to be installed.
 Alternatively, setting `INITRAMFS_GENERATOR=none` will disable image

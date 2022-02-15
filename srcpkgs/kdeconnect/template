@@ -1,6 +1,6 @@
 # Template file for 'kdeconnect'
 pkgname=kdeconnect
-version=21.12.0
+version=21.12.2
 revision=1
 wrksrc="kdeconnect-kde-${version}"
 build_style=cmake
@@ -19,5 +19,5 @@ maintainer="John <me@johnnynator.dev>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/KDE/kdeconnect-kde"
 distfiles="${KDE_SITE}/release-service/${version}/src/${pkgname}-kde-${version}.tar.xz"
-checksum=519e1d03cef6c8b68902be7907fada4988b34c20816a977077576bf168369d4a
+checksum=4680dcd11e9afb4d80ced4b1cbb4a2bb0ce91cdc44797d33e85137b895053c33
 python_version=3

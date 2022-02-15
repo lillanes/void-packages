@@ -1007,19 +1007,6 @@ index 2b78a0cc3..0a70f5ea5 100644
 +
  #endif  // SANDBOX_LINUX_SYSTEM_HEADERS_LINUX_SYSCALLS_H_
  
-diff --git a/sandbox/linux/system_headers/linux_ucontext.h b/sandbox/linux/system_headers/linux_ucontext.h
-index 22ce78027..a69b024c2 100644
---- a/sandbox/linux/system_headers/linux_ucontext.h
-+++ b/sandbox/linux/system_headers/linux_ucontext.h
-@@ -11,6 +11,8 @@
- #include "sandbox/linux/system_headers/arm_linux_ucontext.h"
- #elif defined(__i386__)
- #include "sandbox/linux/system_headers/i386_linux_ucontext.h"
-+#elif defined(__powerpc64__)
-+#include "sandbox/linux/system_headers/ppc64_linux_ucontext.h"
- #else
- #error "No support for your architecture in PNaCl header"
- #endif
 diff --git a/sandbox/linux/system_headers/ppc64_linux_syscalls.h b/sandbox/linux/system_headers/ppc64_linux_syscalls.h
 new file mode 100644
 index 000000000..ccacffe22
@@ -1038,24 +1025,6 @@ index 000000000..ccacffe22
 +//TODO: is it necessary to redefine syscall numbers for PPC64?
 +
 +#endif  // SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_SYSCALLS_H_
-diff --git a/sandbox/linux/system_headers/ppc64_linux_ucontext.h b/sandbox/linux/system_headers/ppc64_linux_ucontext.h
-new file mode 100644
-index 000000000..07728e087
---- /dev/null
-+++ b/sandbox/linux/system_headers/ppc64_linux_ucontext.h
-@@ -0,0 +1,12 @@
-+// Copyright 2014 The Chromium Authors. All rights reserved.
-+// Use of this source code is governed by a BSD-style license that can be
-+// found in the LICENSE file.
-+
-+#ifndef SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_UCONTEXT_H_
-+#define SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_UCONTEXT_H_
-+
-+#include <sys/ucontext.h>
-+
-+//TODO: is it necessary to redefine ucontext on PPC64?
-+
-+#endif  // SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_UCONTEXT_H_
 diff --git a/sandbox/policy/linux/bpf_renderer_policy_linux.cc b/sandbox/policy/linux/bpf_renderer_policy_linux.cc
 index 2588fc792..d455c4601 100644
 --- a/sandbox/policy/linux/bpf_renderer_policy_linux.cc
@@ -3242,44 +3211,6 @@ index 30a2ab21d..60509f21d 100644
  #endif
  }
  
-diff --git a/third_party/crashpad/crashpad/util/posix/signals_test.cc b/third_party/crashpad/crashpad/util/posix/signals_test.cc
-index 54cc2f19f..298b5c993 100644
---- a/third_party/crashpad/crashpad/util/posix/signals_test.cc
-+++ b/third_party/crashpad/crashpad/util/posix/signals_test.cc
-@@ -46,9 +46,9 @@ bool CanCauseSignal(int sig) {
-   return sig == SIGABRT ||
-          sig == SIGALRM ||
-          sig == SIGBUS ||
--#if !defined(ARCH_CPU_ARM64)
-+#if !defined(ARCH_CPU_ARM64) && !defined(ARCH_CPU_PPC64)
-          sig == SIGFPE ||
--#endif  // !defined(ARCH_CPU_ARM64)
-+#endif  // !defined(ARCH_CPU_ARM64) && !defined(ARCH_CPU_PPC64)
- #if defined(ARCH_CPU_X86_FAMILY) || defined(ARCH_CPU_ARMEL)
-          sig == SIGILL ||
- #endif  // defined(ARCH_CPU_X86_FAMILY) || defined(ARCH_CPU_ARMEL)
-@@ -117,9 +117,11 @@ void CauseSignal(int sig) {
-       break;
-     }
- 
--#if !defined(ARCH_CPU_ARM64)
-+#if !defined(ARCH_CPU_ARM64) && !defined(ARCH_CPU_PPC64)
-     // ARM64 has hardware integer division instructions that don’t generate a
-     // trap for divide-by-zero, so this doesn’t produce SIGFPE.
-+    //
-+    // PPC64 fixed-point division by zero also doesn't produce a SIGFPE.
-     case SIGFPE: {
-       // Optimization makes this tricky, so get zero from a system call likely
-       // to succeed, and try to do something with the result.
-@@ -137,7 +139,7 @@ void CauseSignal(int sig) {
-       fstat(quotient, &stat_buf);
-       break;
-     }
--#endif  // ARCH_CPU_ARM64
-+#endif  // !defined(ARCH_CPU_ARM64) && !defined(ARCH_CPU_PPC64)
- 
- #if defined(ARCH_CPU_X86_FAMILY) || defined(ARCH_CPU_ARMEL)
-     case SIGILL: {
 diff --git a/third_party/dav1d/BUILD.gn b/third_party/dav1d/BUILD.gn
 index 6b4566fc3..c07f732ad 100644
 --- a/third_party/dav1d/BUILD.gn
