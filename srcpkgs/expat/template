@@ -1,6 +1,6 @@
 # Template file for 'expat'
 pkgname=expat
-version=2.4.5
+version=2.4.7
 revision=1
 build_style=gnu-configure
 short_desc="XML parser library written in C"
@@ -8,7 +8,7 @@ maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="MIT"
 homepage="https://libexpat.github.io/"
 distfiles="https://github.com/libexpat/libexpat/releases/download/R_${version//./_}/expat-${version}.tar.xz"
-checksum=f2af8fc7cdc63a87920da38cd6d12cb113c3c3a3f437495b1b6541e0cff32579
+checksum=9875621085300591f1e64c18fd3da3a0eeca4a74f884b9abac2758ad1bd07a7d
 
 post_install() {
 	vlicense COPYING
