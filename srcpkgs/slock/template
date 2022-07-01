@@ -14,6 +14,7 @@ do_fetch() {
 }
 
 do_build() {
+	[ -e ${FILESDIR}/config.h ] && cp ${FILESDIR}/config.h config.h
 	sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
 	sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
 	sed -i 's/LDFLAGS =/LDFLAGS +=/g' config.mk

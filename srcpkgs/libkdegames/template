@@ -1,6 +1,6 @@
 # Template file for 'libkdegames'
 pkgname=libkdegames
-version=21.12.3
+version=22.04.2
 revision=1
 build_style=cmake
 hostmakedepends="extra-cmake-modules pkg-config qt5-qmake qt5-host-tools
@@ -12,7 +12,7 @@ license="GPL-2.0-or-later"
 homepage="https://kde.org/applications/games"
 changelog="https://kde.org/announcements/changelogs/gear/${version}/#libkdegames"
 distfiles="${KDE_SITE}/release-service/${version}/src/libkdegames-${version}.tar.xz"
-checksum=4b2f3fb2af0866f7aba1ae679b505faeb7577b0ab50bd619ecb642c48ae0b574
+checksum=c33af6c13540add132122b36b2faabc1f0beaf2c06d29e575f7789f1c5342911
 
 libkdegames-devel_package() {
 	depends="${sourcepkg}>=${version}_${revision} ${makedepends}"

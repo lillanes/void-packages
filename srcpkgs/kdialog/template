@@ -1,6 +1,6 @@
 # Template file for 'kdialog'
 pkgname=kdialog
-version=21.12.3
+version=22.04.2
 revision=1
 build_style=cmake
 hostmakedepends="extra-cmake-modules kcoreaddons kdoctools python3
@@ -12,4 +12,4 @@ license="GPL-2.0-or-later"
 homepage="https://invent.kde.org/utilities/kdialog"
 changelog="https://kde.org/announcements/changelogs/gear/${version}/#kdialog"
 distfiles="${KDE_SITE}/release-service/${version}/src/kdialog-${version}.tar.xz"
-checksum=a370f03edd88913d7cecf2bc9b61e2bd1466418fa1534a8f415a0057186ea111
+checksum=57aa30dbbe53ba807443c1f6dae413ae99ec972d1cb8a67e741eec1008a35933

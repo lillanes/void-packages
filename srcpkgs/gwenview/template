@@ -1,6 +1,6 @@
 # Template file for 'gwenview'
 pkgname=gwenview
-version=21.12.3
+version=22.04.2
 revision=1
 build_style=cmake
 build_helper=qemu
@@ -16,4 +16,4 @@ maintainer="Helmut Pozimski <helmut@pozimski.eu>"
 license="GPL-2.0-or-later"
 homepage="https://www.kde.org/applications/graphics/gwenview"
 distfiles="${KDE_SITE}/release-service/${version}/src/${pkgname}-${version}.tar.xz"
-checksum=28d10e121394e4c710c77f2d46e18fc881c57613603ed65bfd892d4e79f67a7d
+checksum=84eece81340843d6b256008424358128a987858f1bd7eeab0ad588abff244387

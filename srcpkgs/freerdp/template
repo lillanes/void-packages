@@ -1,6 +1,6 @@
 # Template file for 'freerdp'
 pkgname=freerdp
-version=2.6.0
+version=2.7.0
 revision=1
 wrksrc="FreeRDP-${version}"
 build_style=cmake
@@ -20,7 +20,7 @@ maintainer="Orphaned <orphan@voidlinux.org>"
 license="Apache-2.0"
 homepage="https://www.freerdp.com/"
 distfiles="https://github.com/FreeRDP/FreeRDP/archive/${version}.tar.gz"
-checksum=b9eb850f27bed4362b9a1017d37f6e271f43428948f995e7815e039306cb6ddd
+checksum=2350097b2dc865e54a3e858bce0b13a99711428d397ee51d60cf91ccb56c0415
 CFLAGS="-Wno-dev"
 
 case "$XBPS_TARGET_MACHINE" in

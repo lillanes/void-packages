@@ -1,6 +1,6 @@
 # Template file for 'linux5.4'
 pkgname=linux5.4
-version=5.4.184
+version=5.4.201
 revision=1
 wrksrc="linux-${version}"
 short_desc="Linux kernel and modules (${version%.*} series)"
@@ -8,7 +8,7 @@ maintainer="Helmut Pozimski <helmut@pozimski.eu>"
 license="GPL-2.0-only"
 homepage="https://www.kernel.org"
 distfiles="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${version}.tar.xz"
-checksum=8694ca39e6c665cac5a78c7f80acef83ad9b5b13f9688e94bfe39b3c71541489
+checksum=813dd73120c1f72e69feda9c029902450ebfbac6323fe4cf3c5547a298c36e61
 python_version=3
 
 nodebug=yes  # -dbg package is generated below manually
@@ -24,6 +24,7 @@ hostmakedepends="tar xz bc elfutils-devel flex gmp-devel kmod libmpc-devel
 _kernver="${version}_${revision}"
 triggers="kernel-hooks"
 kernel_hooks_version="${_kernver}"
+
 
 # These files could be modified when an external module is built.
 mutable_files="

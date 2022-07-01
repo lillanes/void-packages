@@ -1,0 +1,23 @@
+# Template file for 'up_rewrite'
+pkgname=up_rewrite
+version=1.3.0
+revision=1
+wrksrc="common-proxies-${version}"
+build_style=go
+go_import_path="github.com/karmanyaahm/up_rewrite"
+go_ldflags="-X $go_import_path/config.Version=$version"
+short_desc="Rewrite Proxy for UnifiedPush written in Go"
+maintainer="Joel Beckmeyer <joel@beckmeyer.us>"
+license="MIT"
+homepage="https://unifiedpush.org"
+distfiles="https://github.com/UnifiedPush/common-proxies/archive/v${version}.tar.gz"
+checksum=b93a945c0119a0d7bbfa90436a9f45d5c89d4bc143828bf0e412b9145b0238af
+conf_files="/etc/up_rewrite/config.toml"
+
+system_accounts="_up_rewrite"
+
+post_install() {
+	vinstall example-config.toml 644 etc/up_rewrite config.toml
+	vlicense LICENSE
+	vsv up_rewrite
+}
