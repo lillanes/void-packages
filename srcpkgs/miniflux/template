@@ -1,6 +1,6 @@
 # Template file for 'miniflux'
 pkgname=miniflux
-version=2.0.37
+version=2.0.39
 revision=1
 wrksrc="v2-${version}"
 build_style=go
@@ -10,9 +10,9 @@ short_desc="Minimalist and opinionated feed reader written in Go"
 maintainer="Frank Steinborn <steinex@nognu.de>"
 license="Apache-2.0"
 homepage="https://miniflux.app"
-changelog="https://raw.githubusercontent.com/miniflux/v2/master/ChangeLog"
+changelog="https://raw.githubusercontent.com/miniflux/v2/main/ChangeLog"
 distfiles="https://github.com/miniflux/v2/archive/${version}.tar.gz"
-checksum=fa647ea15ade5ec2ed64648a34d6df30553f1358f7365a3f7301ff4fd212b635
+checksum=917a09c7b4e518a431f8b3ac9ca5b7193027a21828bb242c890c5b956f646173
 system_accounts="_miniflux"
 
 post_install() {

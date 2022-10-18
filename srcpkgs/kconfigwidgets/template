@@ -1,6 +1,6 @@
 # Template file for 'kconfigwidgets'
 pkgname=kconfigwidgets
-version=5.94.0
+version=5.98.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_DESIGNERPLUGIN=ON"
@@ -13,7 +13,7 @@ maintainer="John <me@johnnynator.dev>"
 license="LGPL-2.0-or-later"
 homepage="https://invent.kde.org/frameworks/kconfigwidgets"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=35055f637ff44b0f0e67f9b5c79307d37f5c259289bf71b2a24c0203f82fb508
+checksum=eb3420af0bab13f1a55fac3c796005d140a68b29c52fd9f5a7cdccc270a37c15
 
 kconfigwidgets-devel_package() {
 	short_desc+=" - development"

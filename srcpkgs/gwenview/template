@@ -1,6 +1,6 @@
 # Template file for 'gwenview'
 pkgname=gwenview
-version=22.04.2
+version=22.08.2
 revision=1
 build_style=cmake
 build_helper=qemu
@@ -10,10 +10,10 @@ makedepends="qt5-devel qt5-svg-devel phonon-qt5-devel kio-devel kactivities5-dev
  kitemmodels-devel ki18n-devel kdoctools-devel kparts-devel kwindowsystem-devel
  kiconthemes-devel knotifications-devel ksolid-devel libjpeg-turbo-devel
  exiv2-devel libkipi5-devel lcms2-devel baloo5-devel libkdcraw5-devel cfitsio-devel
- kio-devel kwidgetsaddons-devel"
+ kio-devel kwidgetsaddons-devel kImageAnnotator-devel kColorPicker-devel"
 short_desc="Fast and easy to use image viewer by KDE"
 maintainer="Helmut Pozimski <helmut@pozimski.eu>"
 license="GPL-2.0-or-later"
 homepage="https://www.kde.org/applications/graphics/gwenview"
 distfiles="${KDE_SITE}/release-service/${version}/src/${pkgname}-${version}.tar.xz"
-checksum=84eece81340843d6b256008424358128a987858f1bd7eeab0ad588abff244387
+checksum=c10924777c204e4d48e126afa8c3c9b4f5816a1b493f8e3658e88652624f4eb3

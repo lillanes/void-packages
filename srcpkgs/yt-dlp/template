@@ -1,6 +1,6 @@
 # Template file for 'yt-dlp'
 pkgname=yt-dlp
-version=2022.06.29
+version=2022.10.04
 revision=1
 wrksrc="$pkgname"
 build_style=python3-module
@@ -13,7 +13,7 @@ license="Unlicense"
 homepage="https://github.com/yt-dlp/yt-dlp"
 changelog="https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/Changelog.md"
 distfiles="https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp.tar.gz"
-checksum=3b0aa20659b7ba35a9d74b4d35e7fa1fbe13f4d3a30c3970fd2bf4ac087c407c
+checksum=bd3cf6413cd92a400ff015633372a1454906414226f924b57c1f5826b9abc1a8
 
 do_check() {
 	PYTHON=/usr/bin/python3 make offlinetest

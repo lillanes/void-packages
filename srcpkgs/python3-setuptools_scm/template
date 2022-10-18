@@ -1,6 +1,6 @@
 # Template file for 'python3-setuptools_scm'
 pkgname=python3-setuptools_scm
-version=7.0.2
+version=7.0.5
 revision=1
 wrksrc="${pkgname#python3-}-${version}"
 build_style=python3-module
@@ -11,7 +11,7 @@ maintainer="Andrew J. Hesford <ajh@sideband.org>"
 license="MIT"
 homepage="https://github.com/pypa/setuptools_scm"
 distfiles="${PYPI_SITE}/s/setuptools_scm/setuptools_scm-${version}.tar.gz"
-checksum=53afbaa882f43e5ec8e14f2d93b9c268dc62eb3f6cc8b2790f8cb97903e53c02
+checksum=031e13af771d6f892b941adb6ea04545bbf91ebc5ce68c78aaf3fff6e1fb4844
 # Tests seem to fail unless package is installed
 make_check=no
 

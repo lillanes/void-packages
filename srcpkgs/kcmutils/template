@@ -1,8 +1,9 @@
 # Template file for 'kcmutils'
 pkgname=kcmutils
-version=5.94.0
+version=5.98.0
 revision=1
 build_style=cmake
+build_helper=qemu
 hostmakedepends="kcoreaddons extra-cmake-modules
  kpackage kconfig qt5-host-tools qt5-qmake python3 gettext"
 makedepends="kdeclarative-devel"
@@ -11,7 +12,7 @@ maintainer="John <me@johnnynator.dev>"
 license="LGPL-2.0-or-later, LGPL-2.0-only"
 homepage="https://invent.kde.org/frameworks/kcmutils"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=798cef6990cdcb22e4822ea12c3c0b9aa35797806e93fb474a2f58632cd53309
+checksum=1d1740f3a115111802fcd58c3f7c3e52ca77f65e2c449859ccdd4a132279134b
 
 kcmutils-devel_package() {
 	short_desc+=" - development"

@@ -1,6 +1,6 @@
 # Template file for 'swirc'
 pkgname=swirc
-version=3.3.4
+version=3.3.6
 revision=1
 build_style=configure
 configure_args="$(vopt_with notify libnotify)"
@@ -15,7 +15,7 @@ license="BSD-3-Clause, ISC, MIT"
 homepage="https://www.nifty-networks.net/swirc"
 changelog="https://raw.githubusercontent.com/uhlin/swirc/master/CHANGELOG.md"
 distfiles="https://www.nifty-networks.net/swirc/releases/${pkgname}-${version}.tgz"
-checksum="2a8404965e796a67555b10b54aaf53d32bbd63e1707cd8364c572a5ed7e3f837"
+checksum="d37b24bb5ede44e34a1fcbdfe70cbd94b0f2bec5cc69c76ff73554b5544b0418"
 
 build_options="notify"
 

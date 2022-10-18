@@ -1,6 +1,6 @@
 # Template file for 'qpwgraph'
 pkgname=qpwgraph
-version=0.3.1
+version=0.3.6
 revision=1
 wrksrc="qpwgraph-v${version}"
 build_style=cmake
@@ -12,4 +12,4 @@ license="GPL-2.0-or-later"
 homepage="https://gitlab.freedesktop.org/rncbc/qpwgraph"
 changelog="https://gitlab.freedesktop.org/rncbc/qpwgraph/-/raw/main/ChangeLog"
 distfiles="https://gitlab.freedesktop.org/rncbc/qpwgraph/-/archive/v${version}/qpwgraph-v${version}.tar.gz"
-checksum=450c53c88925f744eb6ae12404c94cfe0c2d24bf0fcca3a3492ff393d321105e
+checksum=6881c7562215357ced385f92f27f12a5db43dce95bb60eba7c0554c2bad7499e
