@@ -1,6 +1,6 @@
 # Template file for 'dmenu'
 pkgname=dmenu
-version=5.1.lillanes
+version=5.2.lillanes
 revision=1
 makedepends="git libXinerama-devel libXft-devel freetype-devel"
 short_desc="Generic menu for X"

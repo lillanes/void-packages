@@ -1,6 +1,6 @@
 # Template file for 'blueman'
 pkgname=blueman
-version=2.3.2
+version=2.3.5
 revision=1
 build_style=gnu-configure
 configure_args="--disable-static"
@@ -15,9 +15,4 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/blueman-project/blueman"
 changelog="https://raw.githubusercontent.com/blueman-project/blueman/main/CHANGELOG.md"
 distfiles="https://github.com/blueman-project/blueman/releases/download/${version}/blueman-${version}.tar.xz"
-checksum=84cf7d7fd1738751c77e0605f72e4cdd4b723078a7768fe3f35309993a0350ae
-
-post_extract() {
-	# force regeneration of this file
-	rm module/_blueman.c
-}
+checksum=b2d21afdf77a06cd86daf5402406f7d2a53459817e29e0bebc4911d4f0dcfda1

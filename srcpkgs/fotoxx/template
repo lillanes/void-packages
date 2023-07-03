@@ -1,20 +1,19 @@
 # Template file for 'fotoxx'
 pkgname=fotoxx
-version=22.35
+version=23.50
 revision=1
-wrksrc=fotoxx
 build_style=gnu-makefile
 make_use_env=yes
 hostmakedepends="pkg-config"
-makedepends="libchamplain-devel libraw-devel"
+makedepends="libchamplain-devel"
 depends="desktop-file-utils exiftool xdg-utils dcraw"
 short_desc="Free open source program for image editing and collection management"
 maintainer="Benjamín Albiñana <benalb@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://www.kornelix.net/fotoxx/fotoxx.html"
 changelog="https://www.kornelix.net/downloads/recent_changes.txt"
-distfiles="https://www.kornelix.net/downloads/downloads/fotoxx-${version}.tar.gz"
-checksum=7c2760c7a499684973156b6a22e5787ae1dbb4925a1ddc8d1f463088a5c9b6ac
+distfiles="https://www.kornelix.net/downloads/downloads/fotoxx-${version}-source.tar.gz"
+checksum=795c48f95fdad95549bc4decfdeceb1c0ef01c413475fb401968828589f6f5dc
 
 CXXFLAGS="-I${XBPS_CROSS_BASE}/usr/include/champlain-0.12"
 

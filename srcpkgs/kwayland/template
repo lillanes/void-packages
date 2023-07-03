@@ -1,6 +1,6 @@
 # Template file for 'kwayland'
 pkgname=kwayland
-version=5.98.0
+version=5.107.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -13,7 +13,7 @@ maintainer="John <me@johnnynator.dev>"
 license="LGPL-2.1-or-later"
 homepage="https://invent.kde.org/frameworks/kwayland"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=1c171ddf9af0e257781ba245f5720da39fc89170fb6a7516ceb00f53df280930
+checksum=855c21176788ea418603500dfd0547c5b01340a79d86d68548b67bb1d3961049
 
 kwayland-devel_package() {
 	short_desc+=" - development"

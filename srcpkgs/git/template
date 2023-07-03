@@ -1,6 +1,6 @@
 # Template file for 'git'
 pkgname=git
-version=2.38.0
+version=2.41.0
 revision=1
 hostmakedepends="asciidoc gettext perl pkg-config tk xmlto"
 makedepends="libglib-devel libcurl-devel libsecret-devel pcre2-devel tk-devel"
@@ -14,7 +14,7 @@ license="GPL-2.0-only"
 homepage="https://git-scm.com/"
 changelog="https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/${version}.txt"
 distfiles="https://www.kernel.org/pub/software/scm/git/git-${version}.tar.xz"
-checksum=923eade26b1814de78d06bda8e0a9f5da8b7c4b304b3f9050ffb464f0310320a
+checksum=e748bafd424cfe80b212cbc6f1bbccc3a47d4862fb1eb7988877750478568040
 replaces="git-perl>=0"
 register_shell=/usr/bin/git-shell
 python_version=3
@@ -64,7 +64,11 @@ do_build() {
 }
 
 do_check() {
-	make test
+	if [ "$XBPS_ALLOW_CHROOT_BREAKOUT" ]; then
+		IKNOWWHATIAMDOING=YES make test ${makejobs}
+	else
+		make test ${makejobs}
+	fi
 	make -C contrib/diff-highlight test
 	make -C contrib/subtree test
 	make -C contrib/credential/netrc test
@@ -97,7 +101,7 @@ git-scalar_package() {
 }
 
 git-cvs_package() {
-	depends="${sourcepkg}-${version}_${revision} cvs cvsps2 perl-DBD-SQLite"
+	depends="${sourcepkg}>=${version}_${revision} cvs cvsps2 perl-DBD-SQLite"
 	short_desc+=" - CVS support"
 	pkg_install() {
 		vmove usr/bin/git-cvsserver
@@ -112,7 +116,7 @@ git-cvs_package() {
 }
 
 git-svn_package() {
-	depends="${sourcepkg}-${version}_${revision} subversion-perl perl-Term-ReadKey"
+	depends="${sourcepkg}>=${version}_${revision} subversion-perl perl-Term-ReadKey"
 	short_desc+=" - Subversion support"
 	pkg_install() {
 		vmove "usr/share/perl5/vendor_perl/Git/SVN*"
@@ -122,7 +126,7 @@ git-svn_package() {
 }
 
 gitk_package() {
-	depends="git-${version}_${revision} tk"
+	depends="${sourcepkg}>=${version}_${revision} tk"
 	short_desc="Git repository browser"
 	license="GPL-2.0-or-later"
 	pkg_install() {
@@ -133,7 +137,7 @@ gitk_package() {
 }
 
 git-gui_package() {
-	depends="git-${version}_${revision} tk"
+	depends="${sourcepkg}>=${version}_${revision} tk"
 	short_desc+=" - GUI tool"
 	license="GPL-2.0-or-later"
 	pkg_install() {
@@ -153,7 +157,7 @@ git-all_package() {
 }
 
 git-libsecret_package() {
-	depends="git-${version}_${revision}"
+	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - libsecret credential helper"
 	license="GPL-2.0-or-later"
 	pkg_install() {
@@ -162,7 +166,7 @@ git-libsecret_package() {
 }
 
 git-netrc_package() {
-	depends="git-${version}_${revision}"
+	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - netrc credential helper"
 	pkg_install() {
 		vmove usr/libexec/git-core/git-credential-netrc

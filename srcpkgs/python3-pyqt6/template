@@ -1,17 +1,11 @@
 # Template file for 'python3-pyqt6'
 pkgname=python3-pyqt6
-version=6.3.1
+version=6.5.0
 revision=1
-wrksrc=PyQt6-$version
 build_style=sip-build
 build_helper=qemu
 configure_args="--confirm-license --dbus $XBPS_CROSS_BASE/usr/include/dbus-1.0"
-hostmakedepends="qt6-base-devel qt6-declarative-devel qt6-tools-devel
- qt6-quick3d-devel qt6-shadertools-devel qt6-svg-devel python3-dbus
- qt6-webchannel-devel qt6-multimedia-devel qt6-location-devel
- qt6-remoteobjects-devel qt6-sensors-devel qt6-serialport-devel
- qt6-connectivity-devel qt6-websockets-devel
- python3-PyQt-builder pkg-config"
+hostmakedepends="qt6-base python3-dbus python3-PyQt-builder pkg-config"
 makedepends="qt6-base-devel qt6-declarative-devel qt6-tools-devel
  qt6-webchannel-devel qt6-multimedia-devel qt6-location-devel
  qt6-remoteobjects-devel qt6-sensors-devel qt6-serialport-devel
@@ -23,7 +17,7 @@ maintainer="Đoàn Trần Công Danh <congdanhqx@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://www.riverbankcomputing.com/software/pyqt/"
 distfiles="$PYPI_SITE/P/PyQt6/PyQt6-$version.tar.gz"
-checksum=8cc6e21dbaf7047d1fc897e396ccd9710a12f2ef976563dad65f06017d2c9757
+checksum=b97cb4be9b2c8997904ea668cf3b0a4ae5822196f7792590d05ecde6216a9fbc
 lib32disabled=yes
 
 if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
@@ -75,7 +69,7 @@ python3-pyqt6-tools_package() {
 
 python3-pyqt6-tools-devel_package() {
 	lib32disabled=yes
-	depends="python3-pyqt6-tools>=${version}_${revision}
+	depends="python3-pyqt6-tools>=${version}_${revision} qt6-tools-devel
 	 python3-pyqt6-widgets-devel>=${version}_${revision}"
 	short_desc="${short_desc} - Tools - development files"
 	pkg_install() {
@@ -177,7 +171,7 @@ python3-pyqt6-declarative_package() {
 python3-pyqt6-declarative-devel_package() {
 	lib32disabled=yes
 	depends="python3-pyqt6-declarative>=${version}_${revision}
-	 python3-pyqt6-widgets-devel>=${version}_${revision}"
+	 qt6-declarative-devel python3-pyqt6-widgets-devel>=${version}_${revision}"
 	short_desc="${short_desc} - Declarative - development files"
 	pkg_install() {
 		vmove "${py3_sitelib}/PyQt6/bindings/QtQml"
@@ -197,7 +191,7 @@ python3-pyqt6-quick3d_package() {
 
 python3-pyqt6-quick3d-devel_package() {
 	lib32disabled=yes
-	depends="python3-pyqt6-quick3d>=${version}_${revision}
+	depends="python3-pyqt6-quick3d>=${version}_${revision} qt6-quick3d-devel
 	 python3-pyqt6-declarative-devel>=${version}_${revision}"
 	short_desc="${short_desc} - Quick3D - development files"
 	pkg_install() {
@@ -236,7 +230,7 @@ python3-pyqt6-svg_package() {
 
 python3-pyqt6-svg-devel_package() {
 	lib32disabled=yes
-	depends="python3-pyqt6-svg>=${version}_${revision}
+	depends="python3-pyqt6-svg>=${version}_${revision} qt6-svg-devel
 	 python3-pyqt6-widgets-devel>=${version}_${revision}"
 	short_desc="${short_desc} - svg - development files"
 	pkg_install() {
@@ -389,6 +383,7 @@ python3-pyqt6-multimedia_package() {
 	depends="${sourcepkg}>=${version}_${revision}"
 	pkg_install() {
 		vmove "${py3_sitelib}/PyQt6/QtMultimedia*"
+		vmove "${py3_sitelib}/PyQt6/QtSpatialAudio*"
 	}
 }
 
@@ -400,6 +395,7 @@ python3-pyqt6-multimedia-devel_package() {
 	 qt6-multimedia-devel"
 	pkg_install() {
 		vmove "${py3_sitelib}/PyQt6/bindings/QtMultimedia*"
+		vmove "${py3_sitelib}/PyQt6/bindings/QtSpatialAudio*"
 	}
 }
 

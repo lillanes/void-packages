@@ -1,6 +1,6 @@
 # Template file for 'okular'
 pkgname=okular
-version=22.08.2
+version=23.04.2
 revision=1
 build_style=cmake
 hostmakedepends="extra-cmake-modules pkg-config gettext kcoreaddons
@@ -16,7 +16,7 @@ maintainer="John <me@johnnynator.dev>"
 license="GPL-2.0-only"
 homepage="https://kde.org/applications/en/graphics/org.kde.okular"
 distfiles="${KDE_SITE}/release-service/${version}/src/${pkgname}-${version}.tar.xz"
-checksum=e94eaff757b41d98ab2b18832909bdc251ae3fda1e8fc332eb6db8a3736d8ead
+checksum=5f86f2be71c47dcaaf10a21b6bbc6b92cc2c6d8930530d201a06643a34aba825
 
 do_check() {
 	cd build

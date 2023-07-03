@@ -1,7 +1,7 @@
 # Template file for 'cocogitto'
 pkgname=cocogitto
-version=5.2.0
-revision=2
+version=5.4.0
+revision=1
 build_style=cargo
 build_helper=qemu
 hostmakedepends="pkg-config"
@@ -13,15 +13,24 @@ license="MIT"
 homepage="https://github.com/cocogitto/cocogitto"
 changelog="https://raw.githubusercontent.com/cocogitto/cocogitto/main/CHANGELOG.md"
 distfiles="https://github.com/cocogitto/cocogitto/archive/refs/tags/${version}.tar.gz"
-checksum=99f9dee05597d7721f6d046dbfefba5cb8d1c4ae22ced415f724affb3a6bd0cc
+checksum=93065217191d3e1739e6bca78b0b6de7d7dd1b5334229702fff9e84162060feb
 # Test suite is not atomic, relies on user environment such as git user configuration
 make_check=no
 
+post_patch() {
+	cargo update --package git2@0.16.1 --precise 0.17.2
+}
+
 post_install() {
-	COG="${DESTDIR}/usr/bin/cog"
+	local cog="${DESTDIR}/usr/bin/cog"
 	for shell in bash zsh fish; do
-		vtargetrun ${COG} generate-completions ${shell} > cog.${shell}
+		vtargetrun ${cog} generate-completions ${shell} > cog.${shell}
 		vcompletion cog.${shell} ${shell} cog
+	done
+
+	vtargetrun ${cog} generate-manpages "${XBPS_BUILDDIR}/${pkgname}-${version}/gen"
+	for manpage in gen/*.1; do
+		vman ${manpage}
 	done
 
 	vdoc README.md

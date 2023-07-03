@@ -1,9 +1,8 @@
 # Template file for 'php8.0'
 pkgname=php8.0
-version=8.0.23
-revision=1
+version=8.0.28
+revision=2
 _php_version=8.0
-wrksrc="php-${version}"
 hostmakedepends="bison pkg-config apache-devel"
 makedepends="apache-devel enchant2-devel freetds-devel freetype-devel gdbm-devel
  gmp-devel libcurl-devel libjpeg-turbo-devel libmariadbclient-devel
@@ -15,15 +14,17 @@ maintainer="Joel Beckmeyer <joel@beckmeyer.us>"
 license="PHP-3.01"
 homepage="https://www.php.net"
 changelog="https://raw.githubusercontent.com/php/php-src/php-${version}/NEWS"
-distfiles="https://www.php.net/distributions/php-${version}.tar.gz"
-checksum=a2dd50e9c4a0328d921b6bc914e8b4e6572f94f09867318f88acca5ac4fa76c7
+# this is the source where the www.php.net code pulls the tarballs it serves
+# at https://www.php.net/distributions/
+distfiles="https://github.com/php/web-php-distributions/raw/master/php-${version}.tar.gz"
+checksum=7432184eae01e4e8e39f03f80e8ec0ca2c8bfebc56e9a7b983541ca8805df22f
 
 conf_files="/etc/php${_php_version}/php.ini"
 
 lib32disabled=yes
 
 if [ -n "$CROSS_BUILD" ]; then
-	# phar needs php to build
+	# phar and pear need php to build
 	hostmakedepends+=" php${_php_version}"
 	CFLAGS+=" -DHAVE_LIBDL
 		 -DHAVE_DLOPEN
@@ -34,6 +35,14 @@ if [ -n "$CROSS_BUILD" ]; then
 		 -DHAVE_SHM_MMAP_POSIX
 		 -DHAVE_SHM_MMAP_FILE"
 fi
+
+alternatives="
+ php:phar.phar:/usr/bin/phar${_php_version}.phar
+ php:php:/usr/bin/php${_php_version}
+ php:phar:/usr/bin/phar${_php_version}
+ php:phar.1:/usr/share/man/man1/phar${_php_version}.1
+ php:phar.phar.1:/usr/share/man/man1/phar${_php_version}.phar.1
+ php:php.1:/usr/share/man/man1/php${_php_version}.1"
 
 do_build() {
 	local _phpconfig="--srcdir=.. \
@@ -90,7 +99,7 @@ do_build() {
 		--with-mysqli=shared,mysqlnd \
 		--with-openssl=shared \
 		--with-external-pcre \
-		--without-pear \
+		--with-pear=/usr/share/pear${_php_version}
 		--with-pdo-mysql=shared,mysqlnd \
 		--with-pdo-odbc=shared,unixODBC,$XBPS_CROSS_BASE/usr \
 		--with-pdo-pgsql=shared,$XBPS_CROSS_BASE/usr \
@@ -112,7 +121,7 @@ do_build() {
 
 	EXTENSION_DIR="/usr/lib/php${_php_version}/modules"
 	export EXTENSION_DIR
-	PEAR_INSTALLDIR=/usr/share/pear
+	PEAR_INSTALLDIR=/usr/share/pear${_php_version}
 	export PEAR_INSTALLDIR
 	EXTRA_LIBS="-ldl"
 	export EXTRA_LIBS
@@ -170,7 +179,7 @@ php8.0-devel_package() {
 
 php8.0-phpdbg_package() {
 	short_desc+=" - interactive debugger"
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	pkg_install() {
 		cd ${wrksrc}/build
 		make INSTALL_ROOT=${PKGDESTDIR} install-phpdbg
@@ -179,7 +188,7 @@ php8.0-phpdbg_package() {
 
 php8.0-cgi_package() {
 	short_desc+=' - CGI and FCGI SAPI'
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	pkg_install() {
 		cd ${wrksrc}/build
 		make INSTALL_ROOT=${PKGDESTDIR} install-cgi
@@ -188,7 +197,7 @@ php8.0-cgi_package() {
 
 php8.0-apache_package() {
 	short_desc+=' - Apache SAPI'
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	conf_files="/etc/apache/extra/php${_php_version}_module.conf"
 	pkg_install() {
 		vinstall ${wrksrc}/build-apache/libs/libphp.so 755 usr/libexec/httpd/modules "libphp${_php_version}.so"
@@ -198,7 +207,7 @@ php8.0-apache_package() {
 
 php8.0-fpm_package() {
 	short_desc+=' - FastCGI Process Manager'
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	conf_files="/etc/php${_php_version}/php-fpm.conf /etc/php${_php_version}/php-fpm.d/*"
 	pkg_install() {
 		cd ${wrksrc}/build
@@ -209,7 +218,7 @@ php8.0-fpm_package() {
 
 php8.0-embed_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - Embed SAPI'
 	pkg_install() {
 		cd ${wrksrc}/build
@@ -218,9 +227,30 @@ php8.0-embed_package() {
 	}
 }
 
+php8.0-pear_package() {
+	lib32disabled=yes
+	depends="php${_php_version}>=${version}_${revision}
+	 php${_php_version}>=devel-${version}_${revision} autoconf"
+	short_desc+=' - PHP Extension and Application Repository'
+	conf_files="/etc/php${_php_version}/pear.conf"
+	pkg_install() {
+		cd ${wrksrc}/build
+		local _env="INSTALL_ROOT=${PKGDESTDIR} PHP_PEAR_PHP_BIN=php${_php_version}"
+		if [ -n "$CROSS_BUILD" ]; then
+			_env+=" PEAR_PHP=/usr/bin/php${_php_version}"
+		fi
+		make install-pear ${_env}
+		rm -rf ${PKGDESTDIR}/.{channels,depdb,depdblock,filemap,lock,registry}
+		rm -rf ${PKGDESTDIR}/usr/share/pear/.{channels,depdb,depdblock,filemap,lock,registry}
+		mv ${PKGDESTDIR}/usr/bin/pear{,${_php_version}}
+		mv ${PKGDESTDIR}/usr/bin/peardev{,${_php_version}}
+		mv ${PKGDESTDIR}/usr/bin/pecl{,${_php_version}}
+	}
+}
+
 php8.0-enchant_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - enchant module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/enchant.so"
@@ -229,7 +259,7 @@ php8.0-enchant_package() {
 
 php8.0-gd_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - gd module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/gd.so"
@@ -238,7 +268,7 @@ php8.0-gd_package() {
 
 php8.0-intl_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - Internationalization module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/intl.so"
@@ -247,7 +277,7 @@ php8.0-intl_package() {
 
 php8.0-ldap_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - LDAP module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/ldap.so"
@@ -256,7 +286,7 @@ php8.0-ldap_package() {
 
 php8.0-mysql_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - MySQL modules'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/*mysql*.so"
@@ -265,7 +295,7 @@ php8.0-mysql_package() {
 
 php8.0-odbc_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - ODBC modules'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/*odbc.so"
@@ -274,7 +304,7 @@ php8.0-odbc_package() {
 
 php8.0-pgsql_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - PostgreSQL modules'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/*pgsql.so"
@@ -283,7 +313,7 @@ php8.0-pgsql_package() {
 
 php8.0-snmp_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - snmp module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/snmp.so"
@@ -292,7 +322,7 @@ php8.0-snmp_package() {
 
 php8.0-sqlite_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - sqlite module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/*sqlite*.so"
@@ -301,7 +331,7 @@ php8.0-sqlite_package() {
 
 php8.0-tidy_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - tidy HTML module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/*tidy*.so"
@@ -310,7 +340,7 @@ php8.0-tidy_package() {
 
 php8.0-xsl_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - XSL module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/xsl.so"
@@ -319,7 +349,7 @@ php8.0-xsl_package() {
 
 php8.0-sodium_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - sodium module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/sodium.so"
@@ -328,7 +358,7 @@ php8.0-sodium_package() {
 
 php8.0-ffi_package() {
 	lib32disabled=yes
-	depends="php${_php_version}-${version}_${revision}"
+	depends="php${_php_version}>=${version}_${revision}"
 	short_desc+=' - FFI module'
 	pkg_install() {
 		vmove "usr/lib/php${_php_version}/modules/ffi.so"

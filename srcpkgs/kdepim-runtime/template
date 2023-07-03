@@ -1,6 +1,6 @@
 # Template file for 'kdepim-runtime'
 pkgname=kdepim-runtime
-version=22.08.2
+version=23.04.2
 revision=1
 build_style=cmake
 # XXX KolabLibraries, Kolabxml
@@ -15,7 +15,7 @@ maintainer="John <me@johnnynator.dev>"
 license="GPL-2.0-or-later, GPL-3.0-or-later, LGPL-2.1-or-later, AGPL-3.0-or-later, BSD-3-Clause, BSD-2-Clause"
 homepage="https://invent.kde.org/unmaintained/kdepimlibs"
 distfiles="${KDE_SITE}/release-service/${version}/src/${pkgname}-${version}.tar.xz"
-checksum=1704444228dc7befe3eee0df3696e0292b5445bb583555609c27d6e7a6954db7
+checksum=987d372f50f9e821f901d70b858a3af5a5830d75253fbe792a517c95b7f28f70
 
 post_install() {
 	for license in AGPL-3.0-or-later.txt BSD-3-Clause.txt BSD-2-Clause.txt; do

@@ -21,15 +21,13 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PATH: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/tmp/bin'
+      PATH: '/usr/libexec/chroot-git:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/tmp/bin'
       XLINT: '1'
       LICENSE_LIST: common/travis/license.lst
 
     steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 200
-      - run: common/travis/fetch_upstream.sh
+      - name: Clone and checkout
+        uses: classabbyamp/treeless-checkout-action@v1
       - run: common/travis/changed_templates.sh
       - run: common/travis/fetch-xbps.sh
       - run: common/travis/fetch-xtools.sh
@@ -42,9 +40,9 @@ jobs:
     if: "!contains(github.event.pull_request.title, '[ci skip]') && !contains(github.event.pull_request.body, '[ci skip]')"
 
     container:
-      image: 'ghcr.io/void-linux/xbps-src-masterdir:20220527RC01-${{ matrix.config.bootstrap }}'
+      image: 'ghcr.io/void-linux/xbps-src-masterdir:20230425RC01-${{ matrix.config.bootstrap }}'
       env:
-        PATH: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/tmp/bin'
+        PATH: '/usr/libexec/chroot-git:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/tmp/bin'
         ARCH: '${{ matrix.config.arch }}'
         BOOTSTRAP: '${{ matrix.config.bootstrap }}'
         TEST: '${{ matrix.config.test }}'
@@ -73,15 +71,13 @@ jobs:
           # Upgrade again (in case there was a xbps update)
           xbps-install -yu
 
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 200
+      - name: Clone and checkout
+        uses: classabbyamp/treeless-checkout-action@v1
       - name: Create hostrepo and prepare masterdir
         run: |
          ln -s "$(pwd)" /hostrepo &&
          common/travis/set_mirror.sh &&
          common/travis/prepare.sh &&
-         common/travis/fetch_upstream.sh &&
          common/travis/fetch-xtools.sh
       - run: common/travis/changed_templates.sh
 

@@ -1,16 +1,16 @@
 # Template file for 'bindfs'
 pkgname=bindfs
-version=1.17.0
+version=1.17.3
 revision=1
 build_style=gnu-configure
 hostmakedepends="pkg-config"
 makedepends="fuse3-devel"
 short_desc="FUSE filesystem for mounting a directory to another location"
-maintainer="Sigrid Solveig Haflínudóttir <sigrid@ftrv.se>"
+maintainer="André Cerqueira <acerqueira021@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://bindfs.org"
 changelog="https://bindfs.org/docs/ChangeLog.utf8.txt"
 distfiles="https://bindfs.org/downloads/bindfs-${version}.tar.gz"
-checksum=70da57d49e7794fe54b8575bfdd6a7943aab54ada2e8e2fdf4be04e0011451dc
+checksum=c16876091572c23242c16e87c5be7e3512f443aae637328d8c011c071e9302eb
 #cannot mount
 make_check=no

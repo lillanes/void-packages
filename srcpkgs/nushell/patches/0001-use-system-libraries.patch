@@ -1,72 +1,69 @@
-From a567591980eeb3bddaac8d13be38baf0ac6e15a7 Mon Sep 17 00:00:00 2001
+From b740aa919b96451231e26a6827b5cfe7bc568e22 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jan=20Christian=20Gr=C3=BCnhage?=
  <jan.christian@gruenhage.xyz>
 Date: Wed, 8 Jun 2022 16:15:55 +0200
 Subject: [PATCH] use system libraries
 
 ---
- Cargo.lock                                  | 2 ++
- Cargo.toml                                  | 4 ++++
- crates/old/nu_plugin_from_sqlite/Cargo.toml | 2 +-
- crates/old/nu_plugin_to_sqlite/Cargo.toml   | 2 +-
- 4 files changed, 8 insertions(+), 2 deletions(-)
+ Cargo.lock                   | 1 -
+ Cargo.toml                   | 2 +-
+ crates/nu-cli/Cargo.toml     | 2 +-
+ crates/nu-command/Cargo.toml | 4 ++--
+ 4 files changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index 7d36ecddf..1360ada48 100644
+index e2b876e3c..2d5772965 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2544,6 +2544,7 @@ dependencies = [
-  "tempfile",
-  "time 0.3.13",
-  "winres",
-+ "zstd",
- ]
- 
- [[package]]
-@@ -5679,4 +5680,5 @@ checksum = "9fd07cbbc53846d9145dbffdf6dd09a7a0aa52be46741825f5c97bdd4f73f12b"
+@@ -2208,7 +2208,6 @@ version = "0.25.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "29f835d03d717946d28b1d1ed632eb6f0e24a299388ee623d0c23118d3e8a7fa"
  dependencies = [
-  "cc",
-  "libc",
-+ "pkg-config",
+- "cc",
+  "pkg-config",
+  "vcpkg",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index 6199fbaa0..5edf138c3 100644
+index 3db073901..318186fda 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -121,3 +121,7 @@ debug = false
- [[bin]]
- name = "nu"
- path = "src/main.rs"
-+
-+[dependencies.zstd]
-+features = ["pkg-config"]
-+version = ">=0.0.0"
-diff --git a/crates/old/nu_plugin_from_sqlite/Cargo.toml b/crates/old/nu_plugin_from_sqlite/Cargo.toml
-index 151e1e9bb..dea47e809 100644
---- a/crates/old/nu_plugin_from_sqlite/Cargo.toml
-+++ b/crates/old/nu_plugin_from_sqlite/Cargo.toml
-@@ -18,7 +18,7 @@ nu-source = { path="../nu-source", version = "0.67.0" }
- tempfile = "3.2.0"
+@@ -63,7 +63,7 @@ nu-term-grid = { path = "./crates/nu-term-grid", version = "0.78.0" }
+ nu-utils = { path = "./crates/nu-utils", version = "0.78.0" }
  
- [dependencies.rusqlite]
--features = ["bundled", "blob"]
-+features = ["blob"]
- version = "0.26.1"
+ nu-ansi-term = "0.47.0"
+-reedline = { version = "0.18.0", features = ["bashisms", "sqlite"] }
++reedline = { version = "0.18.0", features = ["bashisms", "sqlite-dynlib"] }
  
- [build-dependencies]
-diff --git a/crates/old/nu_plugin_to_sqlite/Cargo.toml b/crates/old/nu_plugin_to_sqlite/Cargo.toml
-index 34d93b9cc..e0d778c39 100644
---- a/crates/old/nu_plugin_to_sqlite/Cargo.toml
-+++ b/crates/old/nu_plugin_to_sqlite/Cargo.toml
-@@ -18,7 +18,7 @@ nu-source = { path="../nu-source", version = "0.67.0" }
- tempfile = "3.2.0"
+ rayon = "1.7.0"
+ is_executable = "1.0.1"
+diff --git a/crates/nu-cli/Cargo.toml b/crates/nu-cli/Cargo.toml
+index 2d3ef54c4..d10497bcc 100644
+--- a/crates/nu-cli/Cargo.toml
++++ b/crates/nu-cli/Cargo.toml
+@@ -24,7 +24,7 @@ nu-utils = { path = "../nu-utils", version = "0.78.0" }
+ nu-color-config = { path = "../nu-color-config", version = "0.78.0" }
  
- [dependencies.rusqlite]
--features = ["bundled", "blob"]
-+features = ["blob"]
- version = "0.26.1"
+ nu-ansi-term = "0.47.0"
+-reedline = { version = "0.18.0", features = ["bashisms", "sqlite"] }
++reedline = { version = "0.18.0", features = ["bashisms", "sqlite-dynlib"] }
  
- [build-dependencies]
+ atty = "0.2.14"
+ chrono = { default-features = false, features = ["std"], version = "0.4.23" }
+diff --git a/crates/nu-command/Cargo.toml b/crates/nu-command/Cargo.toml
+index ba02a8518..9006484fb 100644
+--- a/crates/nu-command/Cargo.toml
++++ b/crates/nu-command/Cargo.toml
+@@ -85,8 +85,8 @@ serde_yaml = "0.9.4"
+ sha2 = "0.10.0"
+ # Disable default features b/c the default features build Git (very slow to compile)
+ percent-encoding = "2.2.0"
+-reedline = { version = "0.18.0", features = ["bashisms", "sqlite"] }
+-rusqlite = { version = "0.28.0", features = ["bundled"], optional = true }
++reedline = { version = "0.18.0", features = ["bashisms", "sqlite-dynlib"] }
++rusqlite = { version = "0.28.0", optional = true }
+ sqlparser = { version = "0.32.0", features = ["serde"], optional = true }
+ sysinfo = "0.28.2"
+ tabled = "0.10.0"
 -- 
-2.37.2
+2.40.0
 

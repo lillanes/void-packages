@@ -1,7 +1,7 @@
 # Template file for 'collectd'
 pkgname=collectd
 version=5.12.0
-revision=7
+revision=8
 build_style=gnu-configure
 configure_args="$(vopt_enable rrdtool rrdtool) $(vopt_enable perl perl)
  $(vopt_enable notify notify_desktop) --with-libiptc --enable-virt
@@ -17,7 +17,7 @@ makedepends="libcurl-devel iptables-devel openssl-devel libsensors-devel
  $(vopt_if notify libnotify-devel) $(vopt_if rrdtool rrdtool-devel)
  $(vopt_if prometheus 'protobuf-c-devel libmicrohttpd-devel')"
 short_desc="Daemon which collects system performance statistics periodically"
-maintainer="Steve Prybylski <sa.prybylx@gmail.com>"
+maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-only, MIT"
 homepage="https://collectd.org"
 distfiles="https://collectd.org/files/${pkgname}-${version}.tar.bz2"

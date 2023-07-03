@@ -2,14 +2,13 @@
 pkgname=perl-Params-Validate
 version=1.30
 revision=2
-wrksrc="${pkgname/perl-/}-${version}"
 build_style=perl-ModuleBuild
 hostmakedepends="perl perl-Module-Build"
 makedepends="${hostmakedepends} perl-Module-Implementation"
 depends="perl perl-Module-Implementation"
 checkdepends="perl-Test-Fatal perl-Test-Requires"
 short_desc="Validate method/function parameters"
-maintainer="John Regan <john@jrjrtech.com>"
+maintainer="Orphaned <orphan@voidlinux.org>"
 license="Artistic-2.0"
 homepage="https://metacpan.org/release/Params-Validate"
 distfiles="${CPAN_SITE}/Params/${pkgname/perl-/}-${version}.tar.gz"

@@ -1,8 +1,7 @@
 # Template file for 'rust-bootstrap'
 pkgname=rust-bootstrap
-version=1.63.0
+version=1.70.0
 revision=1
-create_wrksrc=yes
 short_desc="Rust programming language bootstrap toolchain"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="MIT, Apache-2.0"
@@ -10,6 +9,7 @@ homepage="https://www.rust-lang.org/"
 conflicts="rust>=0"
 lib32disabled=yes
 nostrip=yes
+repository=bootstrap
 
 if [ "$XBPS_TARGET_LIBC" = "musl" ]; then
 	depends="libexecinfo-devel"
@@ -18,50 +18,70 @@ fi
 _bootstrap_url="https://static.rust-lang.org/dist"
 
 case "$XBPS_TARGET_MACHINE" in
-	x86_64*|i686|ppc64le|ppc) ;;
+	x86_64*|i686) ;;
 	# See srcpkgs/rust-bootstrap/files/generating-distfiles.md for details
 	*) _bootstrap_url="https://repo-default.voidlinux.org/distfiles";;
 esac
 
-distfiles="
- ${_bootstrap_url}/rustc-${version}-${RUST_TARGET}.tar.xz
- ${_bootstrap_url}/rust-std-${version}-${RUST_TARGET}.tar.xz"
-
+# hardcode platform triplets
+# because this info isn't avaialble here without hacky workarounds
 case "$XBPS_TARGET_MACHINE" in
 	i686)
+		distfiles="
+		 ${_bootstrap_url}/rustc-${version}-i686-unknown-linux-gnu.tar.xz
+		 ${_bootstrap_url}/rust-std-${version}-i686-unknown-linux-gnu.tar.xz"
 		checksum="
-		 11d3729f0343a069e9e59531745170cb0b6ce68f73848699564ea0bbcbf2c02f
-		 3177d3a159b4fcd54bca93d09ff1a903689a64ed4037699de372e685d12d4335"
+		 f89c90f80864f68e42b70d9c14984195629ed9894bb5cfe6c8a0f1140f7816ff
+		 0e5543c35196ca5b08f1b7e49fa3f3b671444d75648504cdbcfd854e2e7efd2d"
 		;;
 	x86_64)
+		distfiles="
+		 ${_bootstrap_url}/rustc-${version}-x86_64-unknown-linux-gnu.tar.xz
+		 ${_bootstrap_url}/rust-std-${version}-x86_64-unknown-linux-gnu.tar.xz"
 		checksum="
-		 bdab9d9afa5c329c40f9ba568364815237fab8426477c12bfabad35ffc484ab5
-		 993c2c17bf76ac626bfb5b17bddce65fbdfc14f70d183f33773de0cd12df46d2"
+		 7d891d3e9bc4f1151545c83cbe3bc6af9ed234388c45ca2e19641262f48615e2
+		 0c0129717da1e27ccf2c56da950d2fe56973f71beec9e80ae6904b282d2f0ee9"
 		;;
 	x86_64-musl)
+		distfiles="
+		 ${_bootstrap_url}/rustc-${version}-x86_64-unknown-linux-musl.tar.xz
+		 ${_bootstrap_url}/rust-std-${version}-x86_64-unknown-linux-musl.tar.xz"
 		checksum="
-		 b6566a9b1dafe03cf4a01b58b2db0e14a0044ae5773736827882bd549108277e
-		 6fcfa4f9a51d35bf2c5c92ac15c688baa8c98d9fded05ab6abfdae85cb5aed8c"
+		 69a3ba1273aedaf7aadc91f6ccf59061eb00205c9c523f0b1f91ca14cfa2058c
+		 7ebaba08385d1ec87d0a27ca8b4e1eb454374da18ffa12621bd1578973754101"
 		;;
+	# placeholders for user-supplied distfiles
 	ppc64le)
+		distfiles="
+		 ${_bootstrap_url}/rustc-${version}-powerpc64le-unknown-linux-gnu.tar.xz
+		 ${_bootstrap_url}/rust-std-${version}-powerpc64le-unknown-linux-gnu.tar.xz"
 		checksum="
-		 b3dc2c082e76b5effe0b158aac3831830168a1a6980b39347c355e49be63fcca
-		 3ae0b74ba428c569fcecebbb09060ad0bd434a5f1fc9ffd1329b56941a897b6e"
+		 badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+		 badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb"
 		;;
 	ppc64le-musl)
+		distfiles="
+		 ${_bootstrap_url}/rustc-${version}-powerpc64le-unknown-linux-musl.tar.xz
+		 ${_bootstrap_url}/rust-std-${version}-powerpc64le-unknown-linux-musl.tar.xz"
 		checksum="
-		 63273dc52f3f9e16e26de1c2f5749cabc3c958af5416cf6da6c7600ddf086447
-		 6f78a87825c624b85c7c5c2a47a185d354a72b1604e354fae40888958069d4d1"
+		 badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+		 badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb"
 		;;
 	ppc64)
+		distfiles="
+		 ${_bootstrap_url}/rustc-${version}-powerpc64-unknown-linux-gnu.tar.xz
+		 ${_bootstrap_url}/rust-std-${version}-powerpc64-unknown-linux-gnu.tar.xz"
 		checksum="
-		 52dacd9c0adda206bc0255dc978f53453fec995a33a905c2b1cf9b1b1fe8089b
-		 514e5f62cb17a0d0ee2981bfb1aba9284f37eb44a20ff36164faab32cc0a22bc"
+		 badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+		 badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb"
 		;;
 	ppc)
+		distfiles="
+		 ${_bootstrap_url}/rustc-${version}-powerpc-unknown-linux-gnu.tar.xz
+		 ${_bootstrap_url}/rust-std-${version}-powerpc-unknown-linux-gnu.tar.xz"
 		checksum="
-		 7a99dd6a7f30b8a8f85d95f47fa77084a48c7ebc94092978daa3563268a4b15b
-		 a25719c0ad2a5e7f52eed87b75cb76c4a52b8dc6e24b4bef16ed7fb9133e5b42"
+		 badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+		 badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb"
 		;;
 	*) broken="rust bootstrap binaries unavailable for ${XBPS_TARGET_MACHINE}";;
 esac

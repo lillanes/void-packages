@@ -1,20 +1,16 @@
 # Template file for 'yt-dlp'
 pkgname=yt-dlp
-version=2022.10.04
+version=2023.06.22
 revision=1
-wrksrc="$pkgname"
 build_style=python3-module
+make_check_args="-k not(download)"
 hostmakedepends="python3-setuptools"
 depends="python3"
-checkdepends="python3-pytest flake8 python3-nose"
+checkdepends="python3-pytest-xdist"
 short_desc="CLI program to download videos from YouTube and other sites"
 maintainer="Michal Vasilek <michal@vasilek.cz>"
 license="Unlicense"
 homepage="https://github.com/yt-dlp/yt-dlp"
 changelog="https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/Changelog.md"
 distfiles="https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp.tar.gz"
-checksum=bd3cf6413cd92a400ff015633372a1454906414226f924b57c1f5826b9abc1a8
-
-do_check() {
-	PYTHON=/usr/bin/python3 make offlinetest
-}
+checksum=5291eb8e077ee1bc2585f4f522d75f1e4f9fd4c3374bace1572cf59b97bdd9c3

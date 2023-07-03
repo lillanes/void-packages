@@ -1,6 +1,6 @@
 # Template file for 'cargo-bootstrap'
 pkgname=cargo-bootstrap
-version=1.63.0
+version=1.70.0
 revision=1
 short_desc="Bootstrap binaries of Rust package manager"
 maintainer="Orphaned <orphan@voidlinux.org>"
@@ -9,43 +9,47 @@ homepage="https://www.rust-lang.org/"
 conflicts="cargo>=0"
 lib32disabled=yes
 nostrip=yes
+repository=bootstrap
 
 _bootstrap_url="https://static.rust-lang.org/dist"
 
-# we don't use upstream cargo binaries for ppc32, as they are busted (probably
-# a dependency is wrong, which results in failed signature verification when
-# updating the crates.io index)
-# ppc64 is excluded because of ABI incompatibility
 case "$XBPS_TARGET_MACHINE" in
-	x86_64*|i686|ppc64le) ;;
+	x86_64*|i686) ;;
 	# See srcpkgs/rust-bootstrap/files/generating-distfiles.md for details
 	*) _bootstrap_url="https://repo-default.voidlinux.org/distfiles" ;;
 esac
 
-wrksrc="cargo-${version}-${RUST_TARGET}"
-distfiles="${_bootstrap_url}/cargo-${version}-${RUST_TARGET}.tar.xz"
-
+# hardcode platform triplets
+# because this info isn't avaialble here without hacky workarounds
 case "$XBPS_TARGET_MACHINE" in
 	i686)
-		checksum="6f2c109fc38ed8ccadcdcccf51d11505651ca9e12c396ab46ac1dbb55265b792"
+		distfiles="${_bootstrap_url}/cargo-${version}-i686-unknown-linux-gnu.tar.xz"
+		checksum="5d20e9b8e56f641c3ef4aef965563806aa220044397485ec56f784657451a329"
 		;;
 	x86_64)
-		checksum="f370d12e4c11f0c835becb738bcf00d363f29b76f8b424b4dcb005abcf15fc9a"
+		distfiles="${_bootstrap_url}/cargo-${version}-x86_64-unknown-linux-gnu.tar.xz"
+		checksum="650e7a890a52869cd14e2305652bff775aec7fc2cf47fc62cf4a89ff07242333"
 		;;
 	x86_64-musl)
-		checksum="6f6ce044832a2433c250f4f27a61f69081e2b0f7e4e1f141492c2ce99ee8511e"
+		distfiles="${_bootstrap_url}/cargo-${version}-x86_64-unknown-linux-musl.tar.xz"
+		checksum="4d7513e23b8710ebacb01ed333d00692331295e45191f5c0795aada00f291d19"
 		;;
+	# placeholders for user-supplied distfiles
 	ppc64le)
-		checksum="a4cdc00a42fd767bf5a296f7126d9db22a0a609cd956bbf0cb3eae882add1be7"
+		distfiles="${_bootstrap_url}/cargo-${version}-powerpc64le-unknown-linux-gnu.tar.xz"
+		checksum="badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb"
 		;;
 	ppc64le-musl)
-		checksum="3dc497186493a9fc974ae8add91a6fed34d95e263bedb95142d636ba257b2240"
+		distfiles="${_bootstrap_url}/cargo-${version}-powerpc64le-unknown-linux-musl.tar.xz"
+		checksum="badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb"
 		;;
 	ppc64)
-		checksum="babded6c2d112aa92cb1af5ca24d93a034b20c0315f03c231a4eb3a92408a6cd"
+		distfiles="${_bootstrap_url}/cargo-${version}-powerpc64-unknown-linux-gnu.tar.xz"
+		checksum="badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb"
 		;;
 	ppc)
-		checksum="3c7f4d28987d8bf5d10fb0cf4ec792b73a4725add2845d69b85e36d47f3c228e"
+		distfiles="${_bootstrap_url}/cargo-${version}-powerpc-unknown-linux-gnu.tar.xz"
+		checksum="badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb"
 		;;
 	*) broken="cargo bootstrap binaries unavailable for ${XBPS_TARGET_MACHINE}";;
 esac

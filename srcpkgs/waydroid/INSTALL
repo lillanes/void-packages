@@ -1,6 +1,8 @@
 case "$ACTION" in
 post)
-	echo "Regenerating Waydroid configs..."
-	waydroid upgrade --offline
+	if [ -f /var/lib/waydroid/waydroid_base.prop ]; then
+		echo "Regenerating Waydroid configs..."
+		waydroid upgrade --offline || :
+	fi
 	;;
 esac

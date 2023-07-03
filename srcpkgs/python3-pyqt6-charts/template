@@ -1,11 +1,10 @@
 # Template file for 'python3-pyqt6-charts'
 pkgname=python3-pyqt6-charts
-version=6.3.1
+version=6.5.0
 revision=1
-wrksrc=PyQt6_Charts-$version
 build_style=sip-build
-hostmakedepends="qt6-charts-devel python3-pyqt6-widgets-devel
- python3-PyQt-builder pkg-config"
+build_helper="python3"
+hostmakedepends="qt6-base python3-PyQt-builder pkg-config"
 makedepends="qt6-charts-devel python3-pyqt6-widgets-devel"
 depends="python3-pyqt6"
 short_desc="Qt6 bindings for Charts - Python 3"
@@ -13,7 +12,7 @@ maintainer="Đoàn Trần Công Danh <congdanhqx@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://www.riverbankcomputing.com/software/pyqtchart/"
 distfiles="$PYPI_SITE/P/PyQt6-Charts/PyQt6_Charts-${version}.tar.gz"
-checksum=e6bbb17a3d5503508cb28a7b8f44dfedd659c43ff62adb64182a004fbd968f2f
+checksum=6ff00f65b2517f99bf106ddd28c76f3ca344f91ecf5ba68191e20a2d90024962
 lib32disabled=yes
 
 python3-pyqt6-charts-devel_package() {

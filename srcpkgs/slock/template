@@ -1,7 +1,8 @@
 # Template file for 'slock'
 pkgname=slock
-version=1.4.lillanes
-revision=3
+version=1.5.lillanes
+revision=1
+hostmakedepends="pkg-config"
 makedepends="git libXrandr-devel"
 short_desc="Simple screen locker for X"
 maintainer="León Illanes <lillanes@cs.toronto.edu>"

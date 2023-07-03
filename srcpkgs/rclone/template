@@ -1,8 +1,7 @@
 # Template file for 'rclone'
 pkgname=rclone
-version=1.59.2
-revision=1
-wrksrc="rclone-v${version}"
+version=1.62.2
+revision=2
 build_style=go
 build_helper=qemu
 go_import_path=github.com/rclone/rclone
@@ -14,7 +13,7 @@ license="MIT"
 homepage="https://rclone.org/"
 changelog="https://rclone.org/changelog/"
 distfiles="https://downloads.rclone.org/v${version}/rclone-v${version}.tar.gz"
-checksum=dc2112e7872f7aabd0548c2c74bcb3c09abda32da66efa287a4c7d5b305bdc6f
+checksum=340371f94604e6771cc4a2c91e37d1bf00a524deab520340440fb0968e783f63
 
 pre_build() {
 	if [ "$CROSS_BUILD" ] && [ "$XBPS_TARGET_LIBC" = musl ]; then

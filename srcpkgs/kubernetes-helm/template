@@ -1,15 +1,14 @@
 # Template file for 'kubernetes-helm'
 pkgname=kubernetes-helm
-version=3.10.0
+version=3.12.0
 revision=1
-wrksrc="helm-${version}"
 hostmakedepends="go make mercurial tar"
 short_desc="Kubernetes Package Manager"
 maintainer="Kyle Nusbaum <knusbaum+void@sdf.org>"
 license="Apache-2.0"
 homepage="https://helm.sh/"
 distfiles="https://github.com/helm/helm/archive/v${version}.tar.gz"
-checksum=eea2099dbcc9b0500149a0907b4a6ba9a937771a3ab490fb6cce8a861100994a
+checksum=320076ba47bfdf31f753e92fe8464a1314600ff365acce3b361e067488364b33
 conflicts="helm"
 nopie=true
 

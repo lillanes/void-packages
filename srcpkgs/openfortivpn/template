@@ -1,6 +1,6 @@
 # Template file for 'openfortivpn'
 pkgname=openfortivpn
-version=1.18.0
+version=1.20.5
 revision=1
 build_style=gnu-configure
 configure_args="
@@ -18,7 +18,7 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/adrienverge/openfortivpn"
 changelog="https://github.com/adrienverge/openfortivpn/raw/master/CHANGELOG.md"
 distfiles="https://github.com/adrienverge/openfortivpn/archive/v${version}.tar.gz"
-checksum=01f4c5d97113d55d469b8078d1b2a8966ee1dfd231574322b36ec48c897c5ae9
+checksum=82581408fd3fff3e017ad188e648ce6e935febc97f6bcd96945372638bfc7f13
 
 conf_files="/etc/openfortivpn/config"
 

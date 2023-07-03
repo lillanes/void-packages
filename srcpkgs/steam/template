@@ -1,9 +1,8 @@
 # Template file for 'steam'
 pkgname=steam
-version=1.0.0.75
-revision=2
+version=1.0.0.78
+revision=1
 archs="i686 x86_64"
-wrksrc=steam-launcher
 depends="zenity xz curl dbus freetype gdk-pixbuf hicolor-icon-theme desktop-file-utils
  liberation-fonts-ttf file tar bash coreutils lsof"
 short_desc="Digital distribution client bootstrap package - Valve's steam client"
@@ -11,7 +10,7 @@ maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="custom: Proprietary license"
 homepage="https://steampowered.com/"
 distfiles="http://repo.steampowered.com/${pkgname}/pool/${pkgname}/s/${pkgname}/${pkgname}_${version}.tar.gz"
-checksum=e52565a5e33b9a4184c5bdc222978b7fea958efd32641d5d5967774d751236a7
+checksum=104259755d7211b5f101db247ff70ebfed6ae6ca3e14da61195d1fbf91c7200d
 repository=nonfree
 
 do_install() {

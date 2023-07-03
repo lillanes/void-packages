@@ -1,8 +1,7 @@
 # Template file for 'postgresql14'
 pkgname=postgresql14
-version=14.5
+version=14.8
 revision=1
-wrksrc="postgresql-${version}"
 build_style=gnu-configure
 make_build_target=world
 _major="${version%%.*}"
@@ -22,7 +21,7 @@ license="PostgreSQL"
 homepage="https://www.postgresql.org"
 changelog="https://www.postgresql.org/docs/current/release-${version//./-}.html"
 distfiles="https://ftp.postgresql.org/pub/source/v${version}/postgresql-${version}.tar.bz2"
-checksum=d4f72cb5fb857c9a9f75ec8cf091a1771272802f2178f0b2e65b7b6ff64f4a30
+checksum=39d38f0030737ed03835debeefee3b37d335462ce4995e2497bc38d621ebe45a
 make_check=ci-skip # Postgres server can't be run as root
 
 conf_files="
@@ -110,7 +109,7 @@ postgresql14-doc_package() {
 	}
 }
 
-postgresql-libs_package() {
+postgresql14-libs_package() {
 	short_desc="PostgreSQL shared libraries"
 	conflicts="postgresql9.6-libs>=0 postgresql12-libs>=0 postgresql13-libs>=0"
 	pkg_install() {
@@ -124,8 +123,8 @@ postgresql-libs_package() {
 	}
 }
 
-postgresql-libs-devel_package() {
-	depends="postgresql-libs>=${version}_${revision}"
+postgresql14-libs-devel_package() {
+	depends="postgresql-libs>=${version}_${revision} openssl-devel"
 	short_desc="PostgreSQL shared libraries (development files)"
 	conflicts="postgresql9.6-libs-devel>=0 postgresql12-libs-devel>=0 postgresql13-libs-devel>=0"
 	pkg_install() {

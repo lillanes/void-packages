@@ -1,6 +1,6 @@
 # Template file for 'vkBasalt'
 pkgname=vkBasalt
-version=0.3.2.6
+version=0.3.2.9
 revision=1
 build_style=meson
 hostmakedepends="glslang pkg-config"
@@ -9,5 +9,5 @@ short_desc="Vulkan post-processing layer"
 maintainer="xolophreny <xolophreny@proton.me>"
 license="Zlib"
 homepage="https://github.com/DadSchoorse/vkBasalt"
-distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=bf71e34d5d3fea677bc5ab95c07fd5eb052369c399d839789331614b90957593
+distfiles="https://github.com/DadSchoorse/vkBasalt/archive/v${version}.tar.gz"
+checksum=f13ff6e8f05218800f0fb516f927983170d5ad4dc661ad671bc1fbc436d53b46

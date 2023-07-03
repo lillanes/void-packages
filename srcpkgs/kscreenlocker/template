@@ -1,6 +1,6 @@
 # Template file for 'kscreenlocker'
 pkgname=kscreenlocker
-version=5.26.0
+version=5.27.6
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF5_HOST_TOOLING=/usr/lib/cmake"
@@ -8,13 +8,13 @@ hostmakedepends="extra-cmake-modules pkg-config kcoreaddons-devel
  qt5-qmake wayland-devel qt5-host-tools gettext kcmutils-devel"
 makedepends="kdeclarative-devel kidletime-devel kcmutils-devel
  libSM-devel kwayland-devel libXi-devel pam-devel libXcursor-devel
- layer-shell-qt-devel"
+ layer-shell-qt-devel libkscreen-devel"
 short_desc="KDE Library and components for secure lock screen architecture"
 maintainer="John <me@johnnynator.dev>"
 license="GPL-2.0-or-later"
 homepage="https://invent.kde.org/plasma/kscreenlocker"
 distfiles="${KDE_SITE}/plasma/${version}/${pkgname}-${version}.tar.xz"
-checksum=e412b2cf65d69f80a866d0332397b494243068e270225f7c95de227b913ec73d
+checksum=5d04960f82895a15e51ad07238a394e347f28815ab93e9f5a97106c21bf1f55d
 
 kscreenlocker-devel_package() {
 	short_desc+=" - development"

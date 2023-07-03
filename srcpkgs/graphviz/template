@@ -1,9 +1,9 @@
 # Template file for 'graphviz'
 pkgname=graphviz
-version=6.0.2
+version=8.0.4
 revision=1
 build_style=gnu-configure
-configure_args="--with-gts"
+configure_args="--with-gts --with-ann=no"
 make_build_args="HOSTCC=$BUILD_CC"
 hostmakedepends="automake flex libltdl-devel libtool perl pkg-config python3"
 makedepends="libpng-devel gd-devel gtk+-devel librsvg-devel libltdl-devel
@@ -16,7 +16,7 @@ license="EPL-1.0"
 homepage="https://www.graphviz.org"
 changelog="https://gitlab.com/graphviz/graphviz/-/raw/main/CHANGELOG.md"
 distfiles="https://gitlab.com/graphviz/graphviz/-/archive/${version}/graphviz-${version}.tar.gz"
-checksum=a9b823af1f1648f1c325050c45b401c38bde86519e8c1ade16284a8f68bed3ff
+checksum=7b9fb6bdc2a79c38edd43a68d1383937e698210acf395bba63f0a07da693f3ac
 
 # `make check` is broken:
 # https://gitlab.com/graphviz/graphviz/-/issues/2112

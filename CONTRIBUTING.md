@@ -20,6 +20,7 @@ while not meeting any of the following requirements, is a good candidate for the
 In particular, new themes are highly unlikely to be accepted.
 Simple shell scripts are unlikely to be accepted unless they provide considerable value to a broad user base.
 New fonts may be accepted if they provide value beyond aesthetics (e.g. they contain glyphs for a script missing in already packaged fonts).
+Packages related to cryptocurrencies (wallets, miners, nodes, etc) are not accepted.
 
 Browser forks, including those based on Chromium and Firefox, are generally not accepted.
 Such forks require heavy patching, maintenance and hours of build time.
@@ -56,7 +57,7 @@ This automatically sets up the `upstream` remote, so `git pull --rebase upstream
 
 Using the GitHub web editor for making changes is strongly discouraged, because you will need to clone the repo anyways to edit and test your changes.
 
-using the the `master` branch of your fork for contributing is also strongly discouraged.
+Using the `master` branch of your fork for contributing is also strongly discouraged.
 It can cause many issues with updating your pull request (also called a PR), and having multiple PRs open at once.
 To create a new branch:
 

@@ -1,6 +1,6 @@
 # Template file for 'faust'
 pkgname=faust
-version=2.41.1
+version=2.54.9
 revision=1
 build_style=gnu-makefile
 hostmakedepends="cmake pkg-config llvm which"
@@ -10,10 +10,10 @@ maintainer="mag <mag-one@autistici.org>"
 license="GPL-2.0-or-later"
 homepage="https://faust.grame.fr/"
 distfiles="https://github.com/grame-cncm/faust/releases/download/${version}/faust-${version}.tar.gz"
-checksum="72145e1d4ffcdd8e687ed7960d1d0717fa2c1dd2566e0bbc3a78fa95bb8b683e"
+checksum="29cfb88f87fd93a55620c18f58ec585a31b6f8106a9fd3528db8340048adef28"
 
 # Android stuffs, used by the 'faust2android' script.
-nostrip_files="libsndfile.so "
+nostrip_files="libsndfile.so libsndfile.a "
 noverifyrdeps="libsndfile.so"
 skiprdeps="/usr/lib/faust/android/app/lib/libsndfile/lib/armeabi-v7a/libsndfile.so
  /usr/lib/faust/android/app/lib/libsndfile/lib/arm64-v8a/libsndfile.so"

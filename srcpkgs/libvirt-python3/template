@@ -1,19 +1,19 @@
 # Template file for 'libvirt-python3'
 pkgname=libvirt-python3
-version=8.8.0
+version=9.4.0
 revision=1
-wrksrc="libvirt-python-${version}"
 build_style=python3-module
 hostmakedepends="pkg-config python3-devel python3-setuptools libvirt-devel
  libapparmor-devel"
 makedepends="libvirt-devel python3-devel"
+depends="python3"
 checkdepends="python3-pytest python3-lxml python3-nose"
 short_desc="Libvirt virtualization API Python3 binding"
 maintainer="Helmut Pozimski <helmut@pozimski.eu>"
 license="LGPL-2.1-or-later"
 homepage="https://pypi.org/project/libvirt-python/"
 distfiles="https://libvirt.org/sources/python/libvirt-python-${version}.tar.gz"
-checksum=3441dd34c8936393e195a1b046bc2cab1b14d35d66772e8a51fe4d9735ec6349
+checksum=2d0adcb54ca1dd1ddc72b45a39894941ff3659f18d61382229ed9029f6274a7f
 
 do_check() {
 	PYTHONPATH="$(cd build/lib.* && pwd)" pytest

@@ -1,24 +1,24 @@
 # Template file for 'element-desktop'
 pkgname=element-desktop
-version=1.11.8
+version=1.11.34
 revision=1
 create_wrksrc=yes
 conf_files="/etc/${pkgname}/config.json"
 hostmakedepends="git yarn nodejs rust cargo python3 curl
- sqlcipher-devel libappindicator-devel libnotify-devel pkg-config
+ sqlcipher-devel libnotify-devel pkg-config
  app-builder jq moreutils"
 makedepends="libsecret-devel"
 depends="c-ares ffmpeg gtk+3 http-parser libevent
- libxslt minizip nss re2 snappy sqlcipher electron19"
+ libxslt minizip nss re2 snappy sqlcipher electron24"
 short_desc="Glossy Matrix collaboration client, desktop version"
 maintainer="Jan Christian Grünhage <jan.christian@gruenhage.xyz>"
 license="Apache-2.0"
 homepage="https://element.io"
 changelog="https://raw.githubusercontent.com/vector-im/element-desktop/develop/CHANGELOG.md"
-distfiles="https://github.com/vector-im/element-desktop/archive/v${version}.tar.gz>element-desktop.tar.gz
- https://github.com/vector-im/element-web/archive/v${version}.tar.gz>element-web.tar.gz"
-checksum="541c01fdac38db2a4e7c058be5d2196ace0cd987c37f58a79631ec43c260182f
- 9d9bb42a3d004ab4659d2945e6752aa278c59bc3b7f75919ce076bf3fb2b5f73"
+distfiles="https://github.com/vector-im/element-desktop/archive/v${version}.tar.gz>element-desktop-v${version}.tar.gz
+ https://github.com/vector-im/element-web/archive/v${version}.tar.gz>element-web-v${version}.tar.gz"
+checksum="5163d11740bb9f9660c919a28c5a6fe2828660849088ce1e6b40b558736afd18
+ 54bfef3484f18135408b427ff253496e36a6ad3788b1df3c6c7ba0655e23e21b"
 
 export USE_SYSTEM_APP_BUILDER=true
 
@@ -42,7 +42,7 @@ post_patch() {
 	jq '.update_base_url = ""' element.io/app/config.json | sponge element.io/app/config.json
 
 	cd ../${pkgname}
-	vsed -i 's/"target": "deb"/"target": "dir"/g' package.json
+	jq '.build.linux.target = ["dir"]' package.json | sponge package.json
 }
 
 pre_build() {

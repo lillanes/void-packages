@@ -1,6 +1,6 @@
 # Template file for 'qpdf'
 pkgname=qpdf
-version=11.1.1
+version=11.4.0
 revision=1
 build_style=cmake
 hostmakedepends="perl pkg-config"
@@ -10,19 +10,12 @@ maintainer="Benjamín Albiñana <benalb@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/qpdf/qpdf"
 changelog="https://raw.githubusercontent.com/qpdf/qpdf/stable/manual/release-notes.rst"
-distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
-checksum=785edab622a1bc7e25e1537ad2c325005d48c5c7957f7abedff405deb80fa59a
+distfiles="https://github.com/qpdf/qpdf/archive/refs/tags/v${version}.tar.gz"
+checksum=6ffda01597f441ae2387964584385fdd5e133d4091252a37607758a4f0bb874b
 
 if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
 	makedepends+=" libatomic-devel"
-	case "$XBPS_TARGET_MACHINE" in
-	armv6l-musl)
-		LIBS="-latomic"
-		;;
-	*)
-		LDFLAGS+=" -latomic"
-		;;
-	esac
+	LIBS="-latomic"
 fi
 
 if [ "$CROSS_BUILD" ]; then

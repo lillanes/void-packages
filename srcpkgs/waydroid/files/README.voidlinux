@@ -1,10 +1,14 @@
 To finish Waydroid installation run:
 
-	# waydroid init
 	# ln -s /etc/sv/waydroid-container /var/service
+	# waydroid init
 
-Additionally for Android 11+ system images ensure 'psi=1' is present on your
-/proc/cmdline (unless the kernel is configured with CONFIG_PSI_DEFAULT_DISABLED=n).
+Additionally ensure /proc/pressure/cpu exists, otherwise add 'psi=1' to your
+kernel cmdline; without this under memory pressure e.g. even the OS bootup or
+gaming *may* cause the /dev/binder session manager to die due to
+/system/bin/lmkd crashing.
+For more details on kernel command line arguments and their configuration see
+https://docs.voidlinux.org/config/kernel.html#cmdline
 
 Currently for audio support you need a PulseAudio server running (pipewire-pulse
 also works).
@@ -12,7 +16,7 @@ also works).
 Optionally clipboard syncing between the container and host Wayland compositor
 can be enabled with:
 
-	# xbps-install python3-pyclip wl-clipboard
+	# xbps-install -S python3-pyclip wl-clipboard
 
 When running under X11 in a nested Wayland compositor you'll also need xclip.
 

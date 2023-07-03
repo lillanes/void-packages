@@ -3,15 +3,16 @@
 # THIS PKG MUST BE SYNCHRONIZED WITH "srcpkgs/firefox-i18n".
 #
 pkgname=firefox
-version=105.0.3
+version=114.0
 revision=1
 build_helper="rust"
 short_desc="Mozilla Firefox web browser"
 maintainer="Duncaen <duncaen@voidlinux.org>"
 license="MPL-2.0, GPL-2.0-or-later, LGPL-2.1-or-later"
 homepage="https://www.mozilla.org/firefox/"
-distfiles="${MOZILLA_SITE}/${pkgname}/releases/${version}/source/${pkgname}-${version}.source.tar.xz"
-checksum=f2fa1e03aecdd4dca0bcda94fd228d3a9ef3635862a2c140f8982d32ae7761e7
+# distfiles="${MOZILLA_SITE}/firefox/candidates/${version/beta/b}-candidates/build1/source/firefox-${version/beta/b}.source.tar.xz"
+distfiles="${MOZILLA_SITE}/firefox/releases/${version}/source/firefox-${version}.source.tar.xz"
+checksum=d23a0502742f52110ce496837ba82b47bf38d40585633787508ae5be9a5b4bc6
 
 lib32disabled=yes
 

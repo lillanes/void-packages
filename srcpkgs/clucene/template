@@ -1,8 +1,7 @@
 # Template file for 'clucene'
 pkgname=clucene
 version=2.3.3.4
-revision=9
-wrksrc=${pkgname}-core-${version}
+revision=10
 build_style=cmake
 configure_args="-DENABLE_ASCII_MODE=OFF -DENABLE_PACKAGING=OFF
  -DBUILD_CONTRIBS_LIB:BOOL=ON -DLIB_DESTINATION:PATH=/usr/lib

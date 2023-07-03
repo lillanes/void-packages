@@ -1,15 +1,17 @@
 # Template file for 'broot'
 pkgname=broot
-version=1.16.0
+version=1.23.0
 revision=1
 build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="oniguruma-devel"
 short_desc="Interactive directory tree view, fuzzy search, balanced BFS descent"
 maintainer="cinerea0 <cinerea0@protonmail.com>"
 license="MIT"
 homepage="https://dystroy.org/broot/"
-changelog="https://raw.githubusercontent.com/Canop/broot/master/CHANGELOG.md"
-distfiles="https://github.com/Canop/broot/archive/v${version}.tar.gz"
-checksum=6d15efba6c790eb8c308acf5340917ff9eebce3afe4e6f5fbbef946a84773c80
+changelog="https://raw.githubusercontent.com/Canop/broot/main/CHANGELOG.md"
+distfiles="https://github.com/Canop/broot/archive/refs/tags/v${version}.tar.gz"
+checksum=4dc855cb67eecb203759b88fb819fe4e725ea646dfdfb7af548805d2f98162b5
 
 if [ "$XBPS_TARGET_ENDIAN" = "be" ]; then
 	broken="exr crate errors on big endian"
@@ -22,4 +24,7 @@ esac
 
 post_install() {
 	vlicense LICENSE
+
+	vsed -e "s/#version/${version}/g;s,#date,$(date +'%Y/%m/%d'),g" -i man/page
+	vman man/page broot.1
 }

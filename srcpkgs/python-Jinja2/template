@@ -2,12 +2,11 @@
 pkgname=python-Jinja2
 version=2.11.3
 revision=2
-wrksrc="Jinja2-${version}"
 build_style=python2-module
 hostmakedepends="python-setuptools"
 depends="python-MarkupSafe"
 short_desc="Full featured template engine (Python2)"
-maintainer="Alessio Sergi <al3hex@gmail.com>"
+maintainer="Orphaned <orphan@voidlinux.org>"
 license="BSD-3-Clause"
 homepage="http://jinja.pocoo.org/"
 changelog="https://raw.githubusercontent.com/pallets/jinja/master/CHANGES.rst"

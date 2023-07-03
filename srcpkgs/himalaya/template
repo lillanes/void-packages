@@ -1,21 +1,38 @@
 # Template file for 'himalaya'
 pkgname=himalaya
-version=0.5.10
+version=0.8.1
 revision=1
 build_style=cargo
-make_install_args="--path cli"
-make_check_args="--lib"
+build_helper="qemu"
 hostmakedepends="pkg-config"
-makedepends="openssl-devel"
+makedepends="sqlite-devel libzstd-devel"
 short_desc="CLI email client"
 maintainer="Gadzhi Kharkharov <me@kkga.me>"
-license="BSD-3-Clause"
-homepage="https://github.com/soywod/himalaya"
+license="MIT"
+homepage="https://pimalaya.org/himalaya/"
 changelog="https://raw.githubusercontent.com/soywod/himalaya/master/CHANGELOG.md"
-distfiles="https://github.com/soywod/himalaya/archive/v${version}.tar.gz"
-checksum=2922b60caa37de70464a11df44704d8b5589f6d968532350267ffb136da54cbd
+distfiles="https://github.com/soywod/himalaya/archive/refs/tags/v${version}.tar.gz"
+checksum=0a4d6325f541e0eb1b23c2f9b6b47eb01feaf78a0eb3fd5a29624990d9ca0e23
+
+post_patch() {
+	cargo update --package crossbeam-channel@0.5.6 --precise 0.5.8
+}
 
 post_install() {
 	vlicense LICENSE
 	vdoc README.md
+
+	local himalaya="${DESTDIR}/usr/bin/himalaya"
+	vtargetrun ${himalaya} man .
+	for page in himalaya*.1; do
+		vman ${page}
+	done
+
+	for shell in bash fish zsh; do
+		vtargetrun ${himalaya} completion ${shell} > himalaya.${shell}
+		vcompletion himalaya.${shell} ${shell}
+	done
+
+	vsconf config.sample.toml config.toml
+	vinstall assets/himalaya.desktop 644 usr/share/applications
 }

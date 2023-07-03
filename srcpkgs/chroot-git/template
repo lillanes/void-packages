@@ -1,16 +1,16 @@
 # Template file for 'chroot-git'
 pkgname=chroot-git
-version=2.38.0
+version=2.40.1
 revision=1
 bootstrap=yes
-wrksrc="git-${version}"
 makedepends="zlib-devel"
 short_desc="GIT Tree History Storage Tool -- for xbps-src use"
 maintainer="Đoàn Trần Công Danh <congdanhqx@gmail.com>"
 license="GPL-2.0-only"
 homepage="https://git-scm.com/"
 distfiles="https://www.kernel.org/pub/software/scm/git/git-${version}.tar.xz"
-checksum=923eade26b1814de78d06bda8e0a9f5da8b7c4b304b3f9050ffb464f0310320a
+checksum=4893b8b98eefc9fdc4b0e7ca249e340004faa7804a433d17429e311e1fef21d2
+repository=bootstrap
 
 if [ "$CHROOT_READY" ]; then
 	checkdepends="perl gnupg"
@@ -62,14 +62,17 @@ do_build() {
 }
 
 do_check() {
-	make test
+	if [ "$CHROOT_READY" ] && [ "$XBPS_ALLOW_CHROOT_BREAKOUT" ]; then
+		export IKNOWWHATIAMDOING=YES
+	fi
+	make test ${makejobs}
 }
 
 do_install() {
 	vmkdir usr/bin
 	vmkdir usr/libexec/chroot-git
+	vbin git chroot-git
 	vinstall git 755 usr/libexec/chroot-git
-	ln -s ../libexec/chroot-git/git $DESTDIR/usr/bin/chroot-git
 	ln -s git $DESTDIR/usr/libexec/chroot-git/git-upload-pack
 	ln -s git $DESTDIR/usr/libexec/chroot-git/git-receive-pack
 	if [ "$CHROOT_READY" ]; then

@@ -1,8 +1,7 @@
 # Template file for 'containers.image'
 pkgname=containers.image
-version=5.22.0
+version=5.24.2
 revision=1
-wrksrc="image-${version}"
 conf_files="/etc/containers/registries.conf /etc/containers/policy.json"
 hostmakedepends="go-md2man"
 short_desc="Configuration shared by podman, buildah, and skopeo"
@@ -10,7 +9,7 @@ maintainer="Cameron Nemo <cam@nohom.org>"
 license="Apache-2.0"
 homepage="https://github.com/containers/image"
 distfiles="https://github.com/containers/image/archive/v${version}.tar.gz"
-checksum=5333fdb1b913250ff9f5f8bf13f986a36a82a9ef79132fc1a5d850ac95b3428d
+checksum=9ddc18a58bbec6de2854e858341c77aebf5a2afe49d00a7288d4e6cfe7732047
 
 do_build() {
 	mkdir -p build
