@@ -1,7 +1,7 @@
 # Template file for 'imlib2'
 pkgname=imlib2
-version=1.11.0
-revision=3
+version=1.12.0
+revision=1
 build_style=gnu-configure
 configure_args="--disable-static --sysconfdir=/etc/imlib2 --enable-visibility-hiding"
 hostmakedepends="pkg-config"
@@ -13,7 +13,7 @@ maintainer="tibequadorian <tibequadorian@posteo.de>"
 license="Imlib2"
 homepage="https://sourceforge.net/projects/enlightenment/"
 distfiles="${SOURCEFORGE_SITE}/enlightenment/imlib2-src/imlib2-${version}.tar.xz"
-checksum=6121196a05a82cc49d104d066ef1bd1e68b4b6394064d244985d0d6aa5fd8170
+checksum=95ff5d4cc17dd9f934c2e7ad151c360f308880a0a7849a6ca43b7c7b9a4bb216
 
 post_install() {
 	vlicense COPYING

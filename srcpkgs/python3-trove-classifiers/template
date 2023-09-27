@@ -1,6 +1,6 @@
 # Template file for 'python3-trove-classifiers'
 pkgname=python3-trove-classifiers
-version=2023.5.24
+version=2023.8.7
 revision=1
 build_style=python3-pep517
 hostmakedepends="python3-setuptools python3-wheel python3-calver"
@@ -12,4 +12,4 @@ license="Apache-2.0"
 homepage="https://github.com/pypa/trove-classifiers"
 changelog="https://github.com/pypa/trove-classifiers/releases"
 distfiles="${PYPI_SITE}/t/trove-classifiers/trove-classifiers-${version}.tar.gz"
-checksum=fd5a1546283be941f47540a135bdeae8fb261380a6a204d9c18012f2a1b0ceae
+checksum=c9f2a0a85d545e5362e967e4f069f56fddfd91215e22ffa48c66fb283521319a

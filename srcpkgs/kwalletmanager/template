@@ -1,6 +1,6 @@
 # Template file for 'kwalletmanager'
 pkgname=kwalletmanager
-version=23.04.2
+version=23.08.0
 revision=1
 build_style=cmake
 hostmakedepends="extra-cmake-modules gettext kauth kdoctools pkg-config
@@ -12,4 +12,4 @@ license="GPL-2.0-only"
 homepage="https://kde.org/applications/system/org.kde.kwalletmanager5"
 changelog="https://kde.org/announcements/changelogs/gear/${version}/#kwalletmanager"
 distfiles="${KDE_SITE}/release-service/${version}/src/kwalletmanager-${version}.tar.xz"
-checksum=f0447365f75834c18ac9833a86e86acbb56309143afbc6daf1e63aa63d95c101
+checksum=d8e1f2137b541d4aa88e57d30ee77223f47c0e9fa63a308941287bb81012c341

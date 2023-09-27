@@ -1,7 +1,7 @@
 # Template file for 'erlang'
 pkgname=erlang
-version=25.3.2
-revision=1
+version=26.1
+revision=2
 build_style=gnu-configure
 make_install_target="install install-docs"
 hostmakedepends="autoconf libxslt perl tar"
@@ -12,7 +12,7 @@ license="Apache-2.0"
 homepage="http://www.erlang.org/"
 changelog="https://github.com/erlang/otp/releases"
 distfiles="https://github.com/erlang/otp/archive/OTP-${version}.tar.gz"
-checksum=504fc2045198c192de7edbb04e880cbb1ee79b1d9880270b8af8ed2348d2e242
+checksum=09864524516bd26be040ae9ee09d70ce38ded2bcec041bc36081313b5031dfe8
 subpackages="erlang-doc"
 
 if [ -z "$CROSS_BUILD" ]; then

@@ -1,25 +1,25 @@
 # Template file for '1password'
 pkgname=1password
-version=8.10.8
+version=8.10.16
 revision=1
 archs="x86_64 aarch64"
 hostmakedepends="gnupg"
 short_desc="Password manager"
-maintainer="b-l-a-i-n-e <blaine.gilbreth@gmail.com>"
+maintainer="Mohammed Anas <triallax@tutanota.com>"
 license="custom:Proprietary"
 homepage="https://www.1password.com"
 
 case "${XBPS_TARGET_MACHINE}" in
 	aarch64)
 		_arch="arm64"
-		checksum="57fa891ede3da4f126d60f76844402b1c989dd99121d3636a00ebd77a0f19265
- e354e5621259b164d9136fa9947a0e617b4e993ff3c0a57b4279900f5b4dcf1e"
+		checksum="4721b5433984af0262df5a72b653a3584e907e15a3bd942e69312d204a60d369
+ 92fbaa0ac00c6d22060fb00c13a4ba1aa95ab424d995bbdb03abff9e7d1a02b4"
 		;;
 
 	x86_64)
 		_arch="x64"
-		checksum="13b957cb1a012f6ce2308222b2c909261679ca62b2bafe335c4aa2814b54e352
- 99e5d9dc9b348d96d8349d68f2a45d11461e2fd2e5c948ad9f4a2c5fcf6af259"
+		checksum="a7d253254c0fa89000ca485f57094490f96a819d21f552d04772b60580019f92
+ b0d3ac1995043819654e068a3e423ea50c906add595e562be182d663d6d5230b"
 		;;
 esac
 

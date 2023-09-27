@@ -1,16 +1,17 @@
 # Template file for 'grype'
 pkgname=grype
-version=0.63.0
+version=0.69.0
 revision=1
 build_style=go
 build_helper=qemu
 go_import_path="github.com/anchore/grype"
+go_package="github.com/anchore/grype/cmd/grype"
 short_desc="Vulnerability scanner for container images and filesystems"
 maintainer="Jan Christian Grünhage <jan.christian@gruenhage.xyz>"
 license="Apache-2.0"
 homepage="https://github.com/anchore/grype"
 distfiles="https://github.com/anchore/grype/archive/refs/tags/v${version}.tar.gz"
-checksum=a55aa18498a2b67f7bdcfb0fac0746a351ceb8a2e9da0842ab1a68a07f0ffa65
+checksum=d20e1fb2fdc28af123ce197ceef3ac9dd99327f3a298e7e3e2eb1dd5dd7b43a3
 
 post_install() {
 	grype="${DESTDIR}/usr/bin/grype"
