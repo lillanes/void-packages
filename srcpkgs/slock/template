@@ -14,6 +14,10 @@ do_fetch() {
 	git clone ${_repository} ${wrksrc}
 }
 
+if [ "$XBPS_TARGET_LIBC" = "glibc" ]; then
+	makedepends+=" libxcrypt-devel"
+fi
+
 do_build() {
 	[ -e ${FILESDIR}/config.h ] && cp ${FILESDIR}/config.h config.h
 	sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk

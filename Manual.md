@@ -62,7 +62,6 @@ packages for XBPS, the `Void Linux` native packaging system.
 		* [kernel-hooks](#triggers_kernel_hooks)
 		* [mimedb](#triggers_mimedb)
 		* [mkdirs](#triggers_mkdirs)
-		* [openjdk-profile](#triggers_openjdk_profile)
 		* [pango-modules](#triggers_pango_module)
 		* [pycompile](#triggers_pycompile)
 		* [register-shell](#triggers_register_shell)
@@ -859,12 +858,14 @@ update multiple packages in a second branch without polluting his local reposito
 The second way to define a repository is by setting the `repository` variable in
 a template. This way the maintainer can define repositories for a specific
 package or a group of packages. This is currently used to distinguish between
-closed source packages, which are put in the `nonfree` repository and other
-packages which are at the root-repository.
+certain classes of packages.
 
 The following repository names are valid:
 
-* `nonfree`: Repository for closed source packages.
+* `bootstrap`: Repository for xbps-src-specific packages.
+* `debug`: Repository for packages containing debug symbols. In almost all cases,
+  these packages are generated automatically.
+* `nonfree`: Repository for packages that are closed source or have nonfree licenses.
 
 <a id="updates"></a>
 ### Checking for new upstream releases
@@ -2013,13 +2014,6 @@ During removal it will delete the directory using `rmdir`.
 
 To include this trigger use the `make_dirs` variable, as the trigger won't do anything
 unless it is defined.
-
-<a id="triggers_openjdk_profile"></a>
-#### openjdk-profile
-
-The openjdk-profile trigger is responsible for creating an entry in /etc/profile.d that
-sets the `JAVA_HOME` environment variable to the currently-selected alternative for
-`/usr/bin/java` on installation. This trigger must be manually requested.
 
 <a id="triggers_pango_module"></a>
 #### pango-modules
