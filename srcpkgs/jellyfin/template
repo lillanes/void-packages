@@ -1,0 +1,27 @@
+# Template file for 'jellyfin'
+pkgname=jellyfin
+version=10.8.13
+revision=1
+archs="x86_64"
+depends="ffmpeg sqlite"
+short_desc="Free Software Media System"
+maintainer="León Illanes <lillanes@cs.toronto.edu>"
+license="GPL-2.0-only"
+homepage="https://jellyfin.org"
+distfiles="https://repo.jellyfin.org/releases/server/linux/stable/combined/jellyfin_${version}_amd64.tar.gz"
+checksum=d82b934c220c977377b2da3329b61988655f98cb88018d348a56b17e8a285c9e
+nopie=yes
+make_dirs="/var/lib/jellyfin 0750 jellyfin jellyfin
+ /var/log/jellyfin 0750 jellyfin jellyfin
+ /var/cache/jellyfin 0750 jellyfin jellyfin
+ /etc/jellyfin 0755 jellyfin jellyfin"
+
+system_accounts="jellyfin"
+jellyfin_homedir="/var/lib/jellyfin"
+
+do_install() {
+    vmkdir opt/jellyfin
+    vcopy * opt/jellyfin
+
+    vsv jellyfin
+}

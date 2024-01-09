@@ -1,0 +1,15 @@
+#!/bin/sh
+
+JELLYFIN_DATA="/var/lib/jellyfin"
+JELLYFIN_CACHE="/var/cache/jellyfin"
+JELLYFIN_CONFIG="/etc/jellyfin"
+JELLYFIN_LOG="/var/log/jellyfin"
+# JELLYFIN_WEB="/usr/lib/jellyfin/jellyfin-web"
+
+cd /var/lib/jellyfin
+
+exec chpst -u jellyfin /opt/jellyfin/jellyfin \
+    -d ${JELLYFIN_DATA} \
+    -C ${JELLYFIN_CACHE} \
+    -c ${JELLYFIN_CONFIG} \
+    -l ${JELLYFIN_LOG}
