@@ -1,6 +1,6 @@
 # Template file for 'dwm'
 pkgname=dwm
-version=6.4.lillanes
+version=6.5.lillanes
 revision=1
 makedepends="git libXinerama-devel libXft-devel freetype-devel"
 short_desc="Dynamic window manager for X"
