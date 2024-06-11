@@ -1,6 +1,6 @@
 # Template file for 'jellyfin'
 pkgname=jellyfin
-version=10.8.13
+version=10.9.6
 revision=1
 archs="x86_64"
 depends="ffmpeg sqlite"
@@ -8,8 +8,8 @@ short_desc="Free Software Media System"
 maintainer="León Illanes <lillanes@cs.toronto.edu>"
 license="GPL-2.0-only"
 homepage="https://jellyfin.org"
-distfiles="https://repo.jellyfin.org/releases/server/linux/stable/combined/jellyfin_${version}_amd64.tar.gz"
-checksum=d82b934c220c977377b2da3329b61988655f98cb88018d348a56b17e8a285c9e
+distfiles="https://repo.jellyfin.org/files/server/linux/stable/v${version}/amd64/jellyfin_${version}-amd64.tar.gz"
+checksum=2fa561c27f16b602164adad05d13585dc2edf19b027958010b27b05e3dbea997
 nopie=yes
 make_dirs="/var/lib/jellyfin 0750 jellyfin jellyfin
  /var/log/jellyfin 0750 jellyfin jellyfin
